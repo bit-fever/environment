@@ -1,34 +1,31 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 27
--- ======================================================================
-
-CREATE TABLE account
-  (
-    id            int            auto_increment,
-    code          varchar(32)    not null,
-    broker_code   varchar(16)    not null,
-    last_balance  double(12,5),
-    last_equity   double(12,5),
-    last_day      int,
-
-    primary key(id),
-    unique(code,broker_code)
-  )
- ENGINE = InnoDB ;
-
+-- === Build : 36
 -- ======================================================================
 
 CREATE TABLE portfolio
   (
     id          int           auto_increment,
-    account_id  int           not null,
-    name        varchar(32)   unique not null,
+    name        varchar(64)   unique not null,
+    created_at  datetime      not null,
+    updated_at  datetime,
 
-    primary key(id),
+    primary key(id)
+  )
+ ENGINE = InnoDB ;
 
-    foreign key(account_id) references account(id)
+-- ======================================================================
+
+CREATE TABLE instrument
+  (
+    id          int           auto_increment,
+    ticker      varchar(16)   unique not null,
+    name        varchar(64)   not null,
+    created_at  datetime      not null,
+    updated_at  datetime,
+
+    primary key(id)
   )
  ENGINE = InnoDB ;
 
@@ -36,48 +33,45 @@ CREATE TABLE portfolio
 
 CREATE TABLE trading_system
   (
-    id            int           auto_increment,
-    portfolio_id  int           not null,
-    ticker        varchar(16)   not null,
-    code          varchar(36)   not null,
+    id                int             auto_increment,
+    code              varchar(36)     unique not null,
+    name              varchar(64)     not null,
+    instrument_id     int             not null,
+    portfolio_id      int             not null,
+    created_at        datetime        not null,
+    updated_at        datetime,
+    first_update      int,
+    last_update       int,
+    last_pl           double(12,5),
+    trading_days      int,
+    num_trades        int,
+    filter_type       int             not null,
+    filter            varchar(1024),
+    suggested_action  int             not null,
 
     primary key(id),
 
+    foreign key(instrument_id) references instrument(id),
     foreign key(portfolio_id) references portfolio(id)
   )
  ENGINE = InnoDB ;
 
 -- ======================================================================
 
-CREATE TABLE daily_profit_info
+CREATE TABLE ts_daily_info
   (
     id                 int            auto_increment,
     trading_system_id  int            not null,
     day                int            not null,
     open_profit        double(12,5)   not null,
-    close_profit       double(12,5)   not null,
+    position           int            not null,
+    gap_value          double(12,5)   not null,
     true_range         double(12,5)   not null,
     num_trades         int            not null,
 
     primary key(id),
 
     foreign key(trading_system_id) references trading_system(id)
-  )
- ENGINE = InnoDB ;
-
--- ======================================================================
-
-CREATE TABLE daily_account_info
-  (
-    id          int            auto_increment,
-    account_id  int            not null,
-    day         int            not null,
-    balance     double(12,5)   not null,
-    equity      double(12,5)   not null,
-
-    primary key(id),
-
-    foreign key(account_id) references account(id)
   )
  ENGINE = InnoDB ;
 
