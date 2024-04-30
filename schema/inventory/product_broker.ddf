@@ -1,0 +1,32 @@
+#---------------------------------------------------------
+#--- File exported in DDF format on 2024-04-26 16:48:58
+#---
+#--- SELECT * FROM inventory.product_broker
+#---------------------------------------------------------
+
+[INFO]
+version=3
+table=product_broker
+
+[FIELDS]
+id,            INTEGER,    K
+connection_id, INTEGER,    N
+exchange_id,   INTEGER,    N
+username,      VARCHAR,    N
+symbol,        VARCHAR,    N
+name,          VARCHAR,    N
+point_value,   REAL,       N
+cost_per_trade,REAL,       N
+margin_value,  REAL,       N
+market_type,   CHAR,       N
+product_type,  CHAR,       N
+local_class,   VARCHAR,    N
+created_at,    TIMESTAMP,  N
+updated_at,    TIMESTAMP,  N
+
+[INSERT]
+1	2	3	user	MGC	MGC	0.0	4.0	1040.0	ME	FU	MGC	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+2	2	1	user	MNQ	MNQ	0.0	5.0	2280.0	IN	FU	MNQ	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+3	2	1	user	MES	MES	0.0	4.0	1314.0	IN	FU	MES	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+4	2	1	user	M6B	M6B	0.0	2.0	313.0	FX	FU	M6B	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+5	2	2	user	MCL	MCL	0.0	4.0	2700.0	EN	FU	MCL	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000

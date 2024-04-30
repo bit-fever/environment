@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$(dirname "$0")" ; pwd -P )"
-CONTAINER_NAME="bitfever-collector-db"
+CONTAINER_NAME="bitfever-rabbitmq"
 
 runDockerContainer(){
     if [[ $(docker ps --filter "name=^/$CONTAINER_NAME$" --format '{{.Names}}') == ${CONTAINER_NAME} ]]; then
@@ -19,14 +19,16 @@ runDockerContainer(){
 	docker run -d \
 		--name ${CONTAINER_NAME} \
 		--restart always \
-		-e MYSQL_ROOT_PASSWORD=root \
-		-v ${DIR}/collector-db:/var/lib/mysql \
-		-p 3402:3306 \
-		mysql:5.7
+		--hostname bitfever \
+		-p 8451:15672 \
+		-p 8450:5672 \
+		-e RABBITMQ_DEFAULT_USER=rabbit-admin \
+		-e RABBITMQ_DEFAULT_PASS=rabbit.admin \
+		rabbitmq:3.12.10-management
 
     if [[ $? == 0 ]]; then
         echo
-        echo "Database running."
+        echo "Message queue running."
         echo
     fi
 }

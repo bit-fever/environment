@@ -19,17 +19,17 @@ runDockerContainer(){
 	docker run -d \
 		--name ${CONTAINER_NAME} \
 		--restart always \
+		-v ${DIR}/collector-data/config:/etc/influxdb2 \
+		-v ${DIR}/collector-data/data:/var/lib/influxdb2 \
+		-p 3410:8086 \
 		-e DOCKER_INFLUXDB_INIT_MODE=setup \
 		-e DOCKER_INFLUXDB_INIT_USERNAME=bitfever \
 		-e DOCKER_INFLUXDB_INIT_PASSWORD=bitfever \
 		-e DOCKER_INFLUXDB_INIT_ORG=BitFever \
 		-e DOCKER_INFLUXDB_INIT_BUCKET=symbol-data \
-		-e DOCKER_INFLUXDB_INIT_RETENTION=8000d \
+		-e DOCKER_INFLUXDB_INIT_RETENTION=1120w \
 		-e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=xdtSqXm2-9Sl7_dpnXx5yQqEbglhklw3KRQDd_0Zj-Vyo-x0sjxbCI4K_wbtyq_xzbn9I4xd9KzAZd7vYlORIQ== \
-		-v ${DIR}/collector-data/config:/etc/influxdb2 \
-		-v ${DIR}/collector-data/data:/var/lib/influxdb2 \
-		-p 8051:8086 \
-		influxdb:2.3.0
+		influxdb:2.7.5 --reporting-disabled
 
     if [[ $? == 0 ]]; then
         echo

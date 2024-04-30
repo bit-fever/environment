@@ -1,0 +1,30 @@
+#---------------------------------------------------------
+#--- File exported in DDF format on 2023-12-13 09:42:40
+#---
+#--- SELECT id,username,code,name,system_code,system_name,system_config,connection_code,supports_feed,supports_broker,supports_multiple_feeds,supports_inventory,created_at,updated_at FROM inventory.connection
+#---------------------------------------------------------
+
+[INFO]
+version=3
+table=connection
+schema=inventory
+
+[FIELDS]
+id,            INTEGER,    K
+username,      VARCHAR,    N
+code,          VARCHAR,    N
+name,          VARCHAR,    N
+system_code,   VARCHAR,    N
+system_name,   VARCHAR,    N
+system_config, LONGVARCHAR,N
+connection_code,VARCHAR,    N
+supports_data, TINYINT,    N
+supports_broker,TINYINT,    N
+supports_multiple_feeds,TINYINT,    N
+supports_inventory,TINYINT,    N
+created_at,    TIMESTAMP,  N
+updated_at,    TIMESTAMP,  N
+
+[INSERT]
+1	user	LOCAL	Local	LOCAL	Local system			1	1	1	0	2023-12-09 09:45:35.000	2023-12-09 09:45:35.000
+2	user	IB-FAKE	IB Fake	IBKR	Interactive Brokers			1	1	0	1	2023-12-09 09:46:00.000	2023-12-09 09:46:00.000

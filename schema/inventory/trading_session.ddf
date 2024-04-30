@@ -1,0 +1,21 @@
+#---------------------------------------------------------
+#--- File exported in DDF format on 2023-12-09 11:55:28
+#---
+#--- SELECT id,username,name,config,created_at,updated_at FROM inventory.product_session
+#---------------------------------------------------------
+
+[INFO]
+version=3
+table=product_session
+schema=inventory
+
+[FIELDS]
+id,            INTEGER,    K
+username,      VARCHAR,    N
+name,          VARCHAR,    N
+config,        LONGVARCHAR,N
+created_at,    TIMESTAMP,  N
+updated_at,    TIMESTAMP,  N
+
+[INSERT]
+1	user	Standard	[]	2023-12-09 00:00:00.0	

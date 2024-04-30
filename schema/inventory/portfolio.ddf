@@ -1,0 +1,30 @@
+#---------------------------------------------------------
+#--- File exported in DDF format on 2023-12-13 09:05:06
+#---
+#--- SELECT id, parent_id, "admin" as username, name, created_at, updated_at FROM portfolio order by id
+#---------------------------------------------------------
+
+[INFO]
+version=3
+table=portfolio
+
+[FIELDS]
+id,            INTEGER,    K
+parent_id,     INTEGER,    N
+username,      VARCHAR,    N
+name,          VARCHAR,    N
+created_at,    TIMESTAMP,  N
+updated_at,    TIMESTAMP,  N
+
+[INSERT]
+1		user	Main	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+2		user	Development	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+3	1	user	Indexes	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+4	1	user	Commodities	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+5	1	user	Energies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+6	1	user	Currencies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+7	3	user	Nasdaq	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+8	3	user	Mini S&P	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+9	4	user	Gold	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+10	5	user	Crude Oil	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+11	6	user	British Pound	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000

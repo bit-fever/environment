@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$(dirname "$0")" ; pwd -P )"
-CONTAINER_NAME="bitfever-collector-db"
+CONTAINER_NAME="bitfever-keycloak-db"
 
 runDockerContainer(){
     if [[ $(docker ps --filter "name=^/$CONTAINER_NAME$" --format '{{.Names}}') == ${CONTAINER_NAME} ]]; then
@@ -20,8 +20,11 @@ runDockerContainer(){
 		--name ${CONTAINER_NAME} \
 		--restart always \
 		-e MYSQL_ROOT_PASSWORD=root \
-		-v ${DIR}/collector-db:/var/lib/mysql \
-		-p 3402:3306 \
+		-e MYSQL_USER=admin \
+		-e MYSQL_PASSWORD=password.123 \
+		-e MYSQL_DATABASE=keycloak \
+		-v ${DIR}/keycloak-db:/var/lib/mysql \
+		-p 3403:3306 \
 		mysql:5.7
 
     if [[ $? == 0 ]]; then

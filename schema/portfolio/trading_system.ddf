@@ -1,0 +1,45 @@
+#---------------------------------------------------------
+#--- File exported in DDF format on 2023-12-31 19:02:57
+#---
+#--- SELECT id,source_id,username,workspace_code,name,status,first_update,last_update,closed_profit,trading_days,num_trades,product_broker_id,broker_symbol,point_value,cost_per_trade,margin_value,currency_id,currency_code FROM portfolio.trading_system
+#---------------------------------------------------------
+
+[INFO]
+version=3
+table=trading_system
+schema=portfolio
+
+[FIELDS]
+id,            INTEGER,    K
+source_id,     INTEGER,    N
+username,      VARCHAR,    N
+workspace_code,VARCHAR,    N
+name,          VARCHAR,    N
+status,        CHAR,       N
+first_update,  INTEGER,    N
+last_update,   INTEGER,    N
+closed_profit, DOUBLE,     N
+trading_days,  INTEGER,    N
+num_trades,    INTEGER,    N
+product_broker_id,INTEGER,    N
+broker_symbol, VARCHAR,    N
+point_value,   REAL,       N
+cost_per_trade,REAL,       N
+margin_value,  REAL,       N
+currency_id,   INTEGER,    N
+currency_code, VARCHAR,    N
+
+[INSERT]
+1	1	user	_Ac_MGC_RevLH_15m_v1	_Ac_MGC_RevLH_15m_v1	di	20230711	20231229	0.0	123	0	1	MGC	0.0	4.0	0.0	1	USD
+2	2	user	_Ac_MNQ_Bias_30m_v1	_Ac_MNQ_Bias_30m_v1	di	20230705	20231229	0.0	122	0	2	MNQ	0.0	5.0	0.0	1	USD
+3	3	user	_Ac_MNQ_Hybrid_15m_v1	_Ac_MNQ_Hybrid_15m_v1	di	20230704	20231229	-80.0	123	0	2	MNQ	0.0	5.0	0.0	1	USD
+4	4	user	_UA_MES_Bias_5m	_UA_MES_Bias_5m	di	20230704	20231229	75.0	123	1	3	MES	0.0	4.0	0.0	1	USD
+5	5	user	_Ac_MBP_RevLH_15m_v1	_Ac_MBP_RevLH_15m_v1	di	20230711	20231229	59.38	123	1	4	M6B	0.0	2.0	0.0	1	USD
+6	6	user	_Ac_MCL_UTF_15m_v1	_Ac_MCL_UTF_15m_v1	di	20230704	20231229	0.0	123	0	5	MCL	0.0	4.0	0.0	1	USD
+7	7	user	_Ac_MES_Hybrid_15m_v1	_Ac_MES_Hybrid_15m_v1	di	20230704	20231229	-150.0	123	0	3	MES	0.0	4.0	0.0	1	USD
+8	8	user	_Ac_MES_RevLH_15m_v1	_Ac_MES_RevLH_15m_v1	di	20230704	20231229	0.0	123	0	3	MES	0.0	4.0	0.0	1	USD
+9	9	user	_Ac_MBP_TF_15m_v1	_Ac_MBP_TF_15m_v1	di	20230711	20231229	0.0	123	0	4	M6B	0.0	2.0	0.0	1	USD
+10	10	user	_Ac_MGC_MRevBB_15m_v1	_Ac_MGC_MRevBB_15m_v1	di	20230711	20231229	0.0	123	0	1	MGC	0.0	4.0	0.0	1	USD
+11	11	user	_Ac_MGC_TF_15m_v1	_Ac_MGC_TF_15m_v1	di	20230711	20231229	0.0	123	0	1	MGC	0.0	4.0	0.0	1	USD
+12	13	user	_Ac_MCL_RevLH_15m_v1	_Ac_MCL_RevLH_15m_v1	di	20230704	20231229	-200.0	123	0	5	MCL	0.0	4.0	0.0	1	USD
+13	14	user	TOP_UA_772_CL_60_v1	TOP_UA_772_CL_60_v1	di	20230706	20231229	0.0	121	0	5	MCL	0.0	4.0	0.0	1	USD
