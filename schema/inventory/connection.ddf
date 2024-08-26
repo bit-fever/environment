@@ -7,7 +7,6 @@
 [INFO]
 version=3
 table=connection
-schema=inventory
 
 [FIELDS]
 id,            INTEGER,    K
@@ -17,10 +16,10 @@ name,          VARCHAR,    N
 system_code,   VARCHAR,    N
 system_name,   VARCHAR,    N
 system_config, LONGVARCHAR,N
-connection_code,VARCHAR,    N
+instance_code,VARCHAR,    N
 supports_data, TINYINT,    N
 supports_broker,TINYINT,    N
-supports_multiple_feeds,TINYINT,    N
+supports_multiple_data,TINYINT,    N
 supports_inventory,TINYINT,    N
 created_at,    TIMESTAMP,  N
 updated_at,    TIMESTAMP,  N

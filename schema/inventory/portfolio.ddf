@@ -1,30 +1,32 @@
 #---------------------------------------------------------
-#--- File exported in DDF format on 2023-12-13 09:05:06
+#--- File exported in DDF format on 2024-07-05 19:10:34
 #---
-#--- SELECT id, parent_id, "admin" as username, name, created_at, updated_at FROM portfolio order by id
+#--- SELECT id,username,parent_id,name,created_at,updated_at FROM inventory.portfolio
 #---------------------------------------------------------
 
 [INFO]
 version=3
 table=portfolio
+schema=inventory
 
 [FIELDS]
 id,            INTEGER,    K
-parent_id,     INTEGER,    N
 username,      VARCHAR,    N
+parent_id,     INTEGER,    N
 name,          VARCHAR,    N
 created_at,    TIMESTAMP,  N
 updated_at,    TIMESTAMP,  N
 
 [INSERT]
-1		user	Main	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-2		user	Development	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-3	1	user	Indexes	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-4	1	user	Commodities	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-5	1	user	Energies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-6	1	user	Currencies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-7	3	user	Nasdaq	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-8	3	user	Mini S&P	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-9	4	user	Gold	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-10	5	user	Crude Oil	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
-11	6	user	British Pound	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+1	user		Main	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+2	user		Development	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+3	user	1	Indexes	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+4	user	1	Commodities	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+5	user	1	Energies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+6	user	1	Currencies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+7	user	3	Nasdaq	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+8	user	3	Mini S&P	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+9	user	4	Gold	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+10	user	5	Crude Oil	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+11	user	6	British Pound	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+12	user	3	DAX	2024-07-05 17:00:00.000	2024-07-05 17:00:00.000

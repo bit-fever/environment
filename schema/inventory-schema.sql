@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 102
+-- === Build : 134
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -54,20 +54,20 @@ CREATE TABLE currency
 
 CREATE TABLE connection
   (
-    id                       int           auto_increment,
-    username                 varchar(32)   not null,
-    code                     varchar(8)    not null,
-    name                     varchar(32)   not null,
-    system_code              varchar(8)    not null,
-    system_name              varchar(32)   not null,
-    system_config            text,
-    connection_code          varchar(36),
-    supports_data            tinyint       not null,
-    supports_broker          tinyint       not null,
-    supports_multiple_feeds  tinyint       not null,
-    supports_inventory       tinyint       not null,
-    created_at               datetime      not null,
-    updated_at               datetime,
+    id                      int           auto_increment,
+    username                varchar(32)   not null,
+    code                    varchar(8)    not null,
+    name                    varchar(32)   not null,
+    system_code             varchar(8)    not null,
+    system_name             varchar(32)   not null,
+    system_config           text,
+    instance_code           varchar(36),
+    supports_data           tinyint       not null,
+    supports_broker         tinyint       not null,
+    supports_multiple_data  tinyint       not null,
+    supports_inventory      tinyint       not null,
+    created_at              datetime      not null,
+    updated_at              datetime,
 
     primary key(id),
     unique(username,code)
@@ -95,98 +95,76 @@ CREATE TABLE exchange
 
 -- ======================================================================
 
-CREATE TABLE product_data
+CREATE TABLE data_product
   (
     id             int           auto_increment,
-    connection_id  int           not null,
     exchange_id    int           not null,
+    connection_id  int           not null,
     username       varchar(32)   not null,
     symbol         varchar(16)   not null,
     name           varchar(64)   not null,
-    increment      double        not null,
     market_type    char(2)       not null,
     product_type   char(2)       not null,
-    local_class    varchar(8)    not null,
     created_at     datetime      not null,
     updated_at     datetime,
 
     primary key(id),
-    unique(exchange_id,username,symbol),
+    unique(connection_id,username,symbol),
 
-    foreign key(connection_id) references connection(id),
-    foreign key(exchange_id) references exchange(id)
+    foreign key(exchange_id) references exchange(id),
+    foreign key(connection_id) references connection(id)
   )
  ENGINE = InnoDB ;
 
-CREATE INDEX product_dataIDX1 ON product_data(username);
+CREATE INDEX data_productIDX1 ON data_product(username);
 
 -- ======================================================================
 
-CREATE TABLE instrument_data
-  (
-    id               int           auto_increment,
-    product_data_id  int           not null,
-    contract_id      int           not null,
-    symbol           varchar(16)   not null,
-    name             varchar(64)   not null,
-    expiration_date  int,
-    is_continuous    tinyint       not null,
-
-    primary key(id),
-
-    foreign key(product_data_id) references product_data(id)
-  )
- ENGINE = InnoDB ;
-
-CREATE INDEX instrument_dataIDX1 ON instrument_data(product_data_id);
-
--- ======================================================================
-
-CREATE TABLE product_broker
+CREATE TABLE broker_product
   (
     id              int           auto_increment,
-    connection_id   int           not null,
     exchange_id     int           not null,
+    connection_id   int           not null,
     username        varchar(32)   not null,
     symbol          varchar(16)   not null,
     name            varchar(64)   not null,
     point_value     float         not null,
     cost_per_trade  float         not null,
     margin_value    float         not null,
+    increment       double        not null,
     market_type     char(2)       not null,
     product_type    char(2)       not null,
-    local_class     varchar(8)    not null,
     created_at      datetime      not null,
     updated_at      datetime,
 
     primary key(id),
-    unique(exchange_id,username,symbol),
+    unique(connection_id,username,symbol),
 
-    foreign key(connection_id) references connection(id),
-    foreign key(exchange_id) references exchange(id)
+    foreign key(exchange_id) references exchange(id),
+    foreign key(connection_id) references connection(id)
   )
  ENGINE = InnoDB ;
 
-CREATE INDEX product_brokerIDX1 ON product_broker(username);
+CREATE INDEX broker_productIDX1 ON broker_product(username);
 
 -- ======================================================================
 
-CREATE TABLE instrument_broker
+CREATE TABLE broker_instrument
   (
     id                 int           auto_increment,
-    product_broker_id  int           not null,
-    contract_id        int           not null,
+    broker_product_id  int           not null,
     symbol             varchar(16)   not null,
     name               varchar(64)   not null,
     expiration_date    int           not null,
 
     primary key(id),
+    unique(broker_product_id,symbol),
 
-    foreign key(product_broker_id) references product_broker(id)
+    foreign key(broker_product_id) references broker_product(id)
   )
  ENGINE = InnoDB ;
 
-CREATE INDEX instrument_brokerIDX1 ON instrument_broker(product_broker_id);
+CREATE INDEX broker_instrumentIDX1 ON broker_instrument(broker_product_id);
 
 -- ======================================================================
 
@@ -195,8 +173,8 @@ CREATE TABLE trading_system
     id                  int           auto_increment,
     portfolio_id        int           not null,
     username            varchar(32)   not null,
-    product_data_id     int           not null,
-    product_broker_id   int           not null,
+    data_product_id     int           not null,
+    broker_product_id   int           not null,
     trading_session_id  int           not null,
     workspace_code      varchar(36)   unique not null,
     name                varchar(64)   not null,
@@ -206,8 +184,8 @@ CREATE TABLE trading_system
     primary key(id),
 
     foreign key(portfolio_id) references portfolio(id),
-    foreign key(product_data_id) references product_data(id),
-    foreign key(product_broker_id) references product_broker(id),
+    foreign key(data_product_id) references data_product(id),
+    foreign key(broker_product_id) references broker_product(id),
     foreign key(trading_session_id) references trading_session(id)
   )
  ENGINE = InnoDB ;

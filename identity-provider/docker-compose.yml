@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+
+  keycloak:
+     container_name: bitfever-keycloak-be
+     image: quay.io/keycloak/keycloak:24.0.5
+     restart: always
+     command:
+      - "start"
+      - "--https-certificate-file=/config/server.crt"
+      - "--https-certificate-key-file=/config/server.key"
+      - "--hostname-url=https://bitfever-server:8443/auth"
+      - "--hostname-admin-url=https://bitfever-server:8443/auth"
+      - "--proxy=reencrypt"
+     volumes:
+       - ./config:/config
+     environment:
+       - KEYCLOAK_ADMIN=keycloak-admin
+       - KEYCLOAK_ADMIN_PASSWORD=key!cloak.2K
+       - KC_DB=mysql
+       - KC_DB_URL=jdbc:mysql://keycloak-db:3306/keycloak?serverTimezone=UTC
+       - KC_DB_USERNAME=admin
+       - KC_DB_PASSWORD=password.123
+     ports:
+       - 8448:8443
+     depends_on:
+       - keycloak-db
+
+  keycloak-db:
+    image: mysql:5.7
+    container_name: bitfever-keycloak-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password.123
+      MYSQL_DATABASE: keycloak
+    volumes:
+      - ./database:/var/lib/mysql
