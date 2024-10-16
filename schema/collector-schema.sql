@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 133
+-- === Build : 138
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -128,10 +128,14 @@ CREATE TABLE bias_config
   (
     id                int            auto_increment,
     bias_analysis_id  int            not null,
+    start_day         smallint       not null,
     start_slot        smallint       not null,
+    end_day           smallint       not null,
     end_slot          smallint       not null,
     months            smallint       not null,
     excludes          varchar(255),
+    operation         tinyint        not null,
+    net_profit        double,
 
     primary key(id),
 

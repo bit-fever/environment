@@ -1,12 +1,12 @@
 #---------------------------------------------------------
-#--- File exported in DDF format on 2023-12-09 11:55:28
+#--- File exported in DDF format on 2024-10-02 10:58:05
 #---
-#--- SELECT id,username,name,config,created_at,updated_at FROM inventory.product_session
+#--- SELECT id,username,name,config,created_at,updated_at FROM inventory.trading_session
 #---------------------------------------------------------
 
 [INFO]
 version=3
-table=product_session
+table=trading_session
 schema=inventory
 
 [FIELDS]
@@ -18,4 +18,11 @@ created_at,    TIMESTAMP,  N
 updated_at,    TIMESTAMP,  N
 
 [INSERT]
-1	user	Standard	[]	2023-12-09 00:00:00.0	
+1	user	CME standard (17:00-16:00)	{ "days": [~000A{ "day":0, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":1, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":2, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":3, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":4, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]}~000A]}	2023-12-09 00:00:00.000	
+2	user	CME meats (8:30-13:05)	{ "days": [~000A{ "day":1, "start":{"hour":8, "min":30}, "end":{"hour":13, "min":5}, "pauses":[]},~000A{ "day":2, "start":{"hour":8, "min":30}, "end":{"hour":13, "min":5}, "pauses":[]},~000A{ "day":3, "start":{"hour":8, "min":30}, "end":{"hour":13, "min":5}, "pauses":[]},~000A{ "day":4, "start":{"hour":8, "min":30}, "end":{"hour":13, "min":5}, "pauses":[]},~000A{ "day":5, "start":{"hour":8, "min":30}, "end":{"hour":13, "min":5}, "pauses":[]}~000A]}~000A	2023-12-09 00:00:00.000	
+3	user	NYMEX standard (18:00-17:00)	{ "days": [~000A{ "day":0, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":1, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":2, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":3, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":4, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]}~000A]}	2023-12-09 00:00:00.000	
+4	user	COMEX standard (18:00-17:00)	{ "days": [~000A{ "day":0, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":1, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":2, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":3, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]},~000A{ "day":4, "start":{"hour":18, "min":0}, "end":{"hour":17, "min":0}, "pauses":[]}~000A]}	2023-12-09 00:00:00.000	
+5	user	CBOE standard (17:00-16:00)	{ "days": [~000A{ "day":0, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":1, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":2, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":3, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":4, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]}~000A]}	2023-12-09 00:00:00.000	
+6	user	CBOT standard (17:00-16:00)	{ "days": [~000A{ "day":0, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":1, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":2, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":3, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]},~000A{ "day":4, "start":{"hour":17, "min":0}, "end":{"hour":16, "min":0}, "pauses":[]}~000A]}	2023-12-09 00:00:00.000	
+7	user	CBOT grains (19:00-13:20)	{ "days": [~000A{ "day":0, "start":{"hour":19, "min":0}, "end":{"hour":13, "min":20}, "pauses":[]},~000A{ "day":1, "start":{"hour":19, "min":0}, "end":{"hour":13, "min":20}, "pauses":[]},~000A{ "day":2, "start":{"hour":19, "min":0}, "end":{"hour":13, "min":20}, "pauses":[]},~000A{ "day":3, "start":{"hour":19, "min":0}, "end":{"hour":13, "min":20}, "pauses":[]},~000A{ "day":4, "start":{"hour":19, "min":0}, "end":{"hour":13, "min":20}, "pauses":[]}~000A]}	2023-12-09 00:00:00.000	
+8	user	EUREX DAX reduced (8:00-22:00)	{ "days": [~000A{ "day":1, "start":{"hour":8, "min":0}, "end":{"hour":22, "min":0}, "pauses":[]},~000A{ "day":2, "start":{"hour":8, "min":0}, "end":{"hour":22, "min":0}, "pauses":[]},~000A{ "day":3, "start":{"hour":8, "min":0}, "end":{"hour":22, "min":0}, "pauses":[]},~000A{ "day":4, "start":{"hour":8, "min":0}, "end":{"hour":22, "min":0}, "pauses":[]},~000A{ "day":5, "start":{"hour":8, "min":0}, "end":{"hour":22, "min":0}, "pauses":[]}~000A]}~000A	2023-12-09 00:00:00.000	

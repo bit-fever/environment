@@ -1,5 +1,5 @@
 #---------------------------------------------------------
-#--- File exported in DDF format on 2024-07-05 19:10:34
+#--- File exported in DDF format on 2024-08-27 19:33:20
 #---
 #--- SELECT id,username,parent_id,name,created_at,updated_at FROM inventory.portfolio
 #---------------------------------------------------------
@@ -30,3 +30,4 @@ updated_at,    TIMESTAMP,  N
 10	user	5	Crude Oil	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
 11	user	6	British Pound	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
 12	user	3	DAX	2024-07-05 17:00:00.000	2024-07-05 17:00:00.000
+13	user	3	Dow Jones	2024-08-27 17:32:00.000	
