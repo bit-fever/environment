@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 134
+-- === Build : 146
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -122,20 +122,20 @@ CREATE INDEX data_productIDX1 ON data_product(username);
 
 CREATE TABLE broker_product
   (
-    id              int           auto_increment,
-    exchange_id     int           not null,
-    connection_id   int           not null,
-    username        varchar(32)   not null,
-    symbol          varchar(16)   not null,
-    name            varchar(64)   not null,
-    point_value     float         not null,
-    cost_per_trade  float         not null,
-    margin_value    float         not null,
-    increment       double        not null,
-    market_type     char(2)       not null,
-    product_type    char(2)       not null,
-    created_at      datetime      not null,
-    updated_at      datetime,
+    id                  int           auto_increment,
+    exchange_id         int           not null,
+    connection_id       int           not null,
+    username            varchar(32)   not null,
+    symbol              varchar(16)   not null,
+    name                varchar(64)   not null,
+    point_value         float         not null,
+    cost_per_operation  float         not null,
+    margin_value        float         not null,
+    increment           double        not null,
+    market_type         char(2)       not null,
+    product_type        char(2)       not null,
+    created_at          datetime      not null,
+    updated_at          datetime,
 
     primary key(id),
     unique(connection_id,username,symbol),

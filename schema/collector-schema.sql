@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 138
+-- === Build : 146
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -71,13 +71,13 @@ CREATE INDEX upload_jobIDX1 ON upload_job(data_instrument_id);
 
 CREATE TABLE broker_product
   (
-    id              int,
-    symbol          varchar(16)   not null,
-    username        varchar(32)   not null,
-    name            varchar(64)   not null,
-    point_value     float         not null,
-    cost_per_trade  float         not null,
-    currency_code   varchar(16)   not null,
+    id                  int,
+    symbol              varchar(16)   not null,
+    username            varchar(32)   not null,
+    name                varchar(64)   not null,
+    point_value         float         not null,
+    cost_per_operation  float         not null,
+    currency_code       varchar(16)   not null,
 
     primary key(id)
   )
@@ -135,6 +135,7 @@ CREATE TABLE bias_config
     months            smallint       not null,
     excludes          varchar(255),
     operation         tinyint        not null,
+    gross_profit      double,
     net_profit        double,
 
     primary key(id),

@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Store
 -- ===
--- === Build : 120
+-- === Build : 146
 -- ======================================================================
 
 CREATE TABLE system_data_1m
@@ -13,7 +13,8 @@ CREATE TABLE system_data_1m
     high         double precision   not null,
     low          double precision   not null,
     close        double precision   not null,
-    volume       int                not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,system_code)
   );
@@ -29,7 +30,8 @@ CREATE TABLE system_data_5m
     high         double precision   not null,
     low          double precision   not null,
     close        double precision   not null,
-    volume       int                not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,system_code)
   );
@@ -45,7 +47,8 @@ CREATE TABLE system_data_15m
     high         double precision   not null,
     low          double precision   not null,
     close        double precision   not null,
-    volume       int                not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,system_code)
   );
@@ -61,7 +64,8 @@ CREATE TABLE system_data_60m
     high         double precision   not null,
     low          double precision   not null,
     close        double precision   not null,
-    volume       int                not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,system_code)
   );
@@ -70,14 +74,15 @@ CREATE TABLE system_data_60m
 
 CREATE TABLE user_data_1m
   (
-    time        timestamptz        not null,
-    symbol      text               not null,
-    product_id  int                not null,
-    open        double precision   not null,
-    high        double precision   not null,
-    low         double precision   not null,
-    close       double precision   not null,
-    volume      int                not null,
+    time         timestamptz        not null,
+    symbol       text               not null,
+    product_id   int                not null,
+    open         double precision   not null,
+    high         double precision   not null,
+    low          double precision   not null,
+    close        double precision   not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,product_id)
   );
@@ -86,14 +91,15 @@ CREATE TABLE user_data_1m
 
 CREATE TABLE user_data_5m
   (
-    time        timestamptz        not null,
-    symbol      text               not null,
-    product_id  int                not null,
-    open        double precision   not null,
-    high        double precision   not null,
-    low         double precision   not null,
-    close       double precision   not null,
-    volume      int                not null,
+    time         timestamptz        not null,
+    symbol       text               not null,
+    product_id   int                not null,
+    open         double precision   not null,
+    high         double precision   not null,
+    low          double precision   not null,
+    close        double precision   not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,product_id)
   );
@@ -102,14 +108,15 @@ CREATE TABLE user_data_5m
 
 CREATE TABLE user_data_15m
   (
-    time        timestamptz        not null,
-    symbol      text               not null,
-    product_id  int                not null,
-    open        double precision   not null,
-    high        double precision   not null,
-    low         double precision   not null,
-    close       double precision   not null,
-    volume      int                not null,
+    time         timestamptz        not null,
+    symbol       text               not null,
+    product_id   int                not null,
+    open         double precision   not null,
+    high         double precision   not null,
+    low          double precision   not null,
+    close        double precision   not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,product_id)
   );
@@ -118,14 +125,15 @@ CREATE TABLE user_data_15m
 
 CREATE TABLE user_data_60m
   (
-    time        timestamptz        not null,
-    symbol      text               not null,
-    product_id  int                not null,
-    open        double precision   not null,
-    high        double precision   not null,
-    low         double precision   not null,
-    close       double precision   not null,
-    volume      int                not null,
+    time         timestamptz        not null,
+    symbol       text               not null,
+    product_id   int                not null,
+    open         double precision   not null,
+    high         double precision   not null,
+    low          double precision   not null,
+    close        double precision   not null,
+    up_volume    int                not null,
+    down_volume  int                not null,
 
     unique(time,symbol,product_id)
   );

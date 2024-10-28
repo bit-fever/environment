@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">140</attrib>
-		<attrib name="serial">33101</attrib>
+		<attrib name="build">154</attrib>
+		<attrib name="serial">34934</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1230,9 +1230,8 @@
 			</query>
 			<query>
 				<attribs>
-					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table product_data add increment double not null
-</attrib>
+					<attrib name="name">Rename</attrib>
+					<attrib name="sqlCode">ALTER TABLE broker_product CHANGE cost_per_trade cost_per_operation float</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -3584,7 +3583,7 @@
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">cost_per_trade</attrib>
+						<attrib name="name">cost_per_operation</attrib>
 						<attrib name="id">16958</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5076,7 +5075,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table instrument add slippage float</attrib>
+					<attrib name="sqlCode">alter table trading_system add suggested_action tinyint not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5090,7 +5089,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table instrument change slippage cost float</attrib>
+					<attrib name="sqlCode">ALTER TABLE trading_system CHANGE runnning running tinyint not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5106,6 +5105,22 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 				<attribs>
 					<attrib name="name">Rename</attrib>
 					<attrib name="sqlCode">ALTER TABLE trading_system CHANGE product_broker_id broker_product_id int not null</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">NumTrades</attrib>
+					<attrib name="sqlCode">SELECT name, day, di.closed_profit, di.num_trades FROM daily_info di join trading_system ts on di.trading_system_id=ts.id
+where di.num_trades &gt;2
+order by name, day</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">Last trades</attrib>
+					<attrib name="sqlCode">SELECT trading_system_id, max(exit_time) as max_time FROM trade group by trading_system_id order by max_time</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5353,52 +5368,6 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 							<attrib name="85">false</attrib>
 							<attrib name="84">false</attrib>
 							<attrib name="83">false</attrib>
-							<attrib name="17">true</attrib>
-							<attrib name="16">false</attrib>
-							<attrib name="15">false</attrib>
-							<attrib name="339"/>
-							<attrib name="338">false</attrib>
-							<attrib name="340">false</attrib>
-						</attribs>
-					</fieldAttribs>
-					<attribs>
-						<attrib name="comment"/>
-						<attrib name="matchType">s</attrib>
-						<attrib name="refField">0</attrib>
-						<attrib name="name">status</attrib>
-						<attrib name="id">21342</attrib>
-						<attrib name="onDelete">n</attrib>
-						<attrib name="onUpdate">n</attrib>
-						<attrib name="refTable">0</attrib>
-						<attrib name="type">23283</attrib>
-					</attribs>
-					<modsConfig/>
-					<docs>
-						<p>
-							<t>DS: disabled
-</t>
-						</p>
-						<p>
-							<t>EG: enabling
-</t>
-						</p>
-						<p>
-							<t>EN: enabled
-</t>
-						</p>
-						<p>
-							<t>DG: disabling
-</t>
-						</p>
-					</docs>
-				</field>
-				<field>
-					<fieldAttribs>
-						<attribs>
-							<attrib name="86">false</attrib>
-							<attrib name="85">false</attrib>
-							<attrib name="84">false</attrib>
-							<attrib name="83">false</attrib>
 							<attrib name="17">false</attrib>
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
@@ -5411,12 +5380,12 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">first_update</attrib>
+						<attrib name="name">first_trade</attrib>
 						<attrib name="id">21137</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">5</attrib>
+						<attrib name="type">46</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -5439,12 +5408,12 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">last_update</attrib>
+						<attrib name="name">last_trade</attrib>
 						<attrib name="id">21138</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">5</attrib>
+						<attrib name="type">46</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -5467,12 +5436,12 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">closed_profit</attrib>
+						<attrib name="name">lm_net_profit</attrib>
 						<attrib name="id">21139</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">49</attrib>
+						<attrib name="type">32779</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -5495,12 +5464,12 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">trading_days</attrib>
+						<attrib name="name">lm_net_avg_trade</attrib>
 						<attrib name="id">21140</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">5</attrib>
+						<attrib name="type">32779</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -5523,7 +5492,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">num_trades</attrib>
+						<attrib name="name">lm_num_trades</attrib>
 						<attrib name="id">21141</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5635,7 +5604,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">cost_per_trade</attrib>
+						<attrib name="name">cost_per_operation</attrib>
 						<attrib name="id">24124</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5755,6 +5724,182 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="type">8773</attrib>
 					</attribs>
 					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">running</attrib>
+						<attrib name="id">34523</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">activation</attrib>
+						<attrib name="id">34658</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">active</attrib>
+						<attrib name="id">34794</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">status</attrib>
+						<attrib name="id">21342</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>DS: disabled
+</t>
+						</p>
+						<p>
+							<t>EG: enabling
+</t>
+						</p>
+						<p>
+							<t>EN: enabled
+</t>
+						</p>
+						<p>
+							<t>DG: disabling
+</t>
+						</p>
+					</docs>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">suggested_action</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">34932</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>DS: disabled
+</t>
+						</p>
+						<p>
+							<t>EG: enabling
+</t>
+						</p>
+						<p>
+							<t>EN: enabled
+</t>
+						</p>
+						<p>
+							<t>DG: disabling
+</t>
+						</p>
+					</docs>
 				</field>
 			</table>
 			<table>
@@ -5876,7 +6021,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">equ_avg_days</attrib>
+						<attrib name="name">equ_avg_len</attrib>
 						<attrib name="id">24386</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5932,7 +6077,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">pos_pro_days</attrib>
+						<attrib name="name">pos_pro_len</attrib>
 						<attrib name="id">24392</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5988,7 +6133,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">win_per_days</attrib>
+						<attrib name="name">win_per_len</attrib>
 						<attrib name="id">24400</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6072,7 +6217,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">old_new_old_days</attrib>
+						<attrib name="name">old_new_old_len</attrib>
 						<attrib name="id">24412</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6128,7 +6273,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">old_new_new_days</attrib>
+						<attrib name="name">old_new_new_len</attrib>
 						<attrib name="id">24418</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6153,8 +6298,8 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 				<rules/>
 				<attribs>
 					<attrib name="comment"/>
-					<attrib name="name">daily_info</attrib>
-					<attrib name="id">9839</attrib>
+					<attrib name="name">trade</attrib>
+					<attrib name="id">33102</attrib>
 					<attrib name="schema"/>
 					<attrib name="tempPK"/>
 					<attrib name="ghost">false</attrib>
@@ -6202,7 +6347,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
 						<attrib name="name">id</attrib>
-						<attrib name="id">9841</attrib>
+						<attrib name="id">33105</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -6221,8 +6366,8 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
-							<attrib name="338">true</attrib>
-							<attrib name="340">false</attrib>
+							<attrib name="338">false</attrib>
+							<attrib name="340">true</attrib>
 						</attribs>
 					</fieldAttribs>
 					<attribs>
@@ -6230,7 +6375,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">23277</attrib>
 						<attrib name="name">trading_system_id</attrib>
-						<attrib name="id">9844</attrib>
+						<attrib name="id">33109</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">23274</attrib>
@@ -6249,7 +6394,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
-							<attrib name="338">true</attrib>
+							<attrib name="338">false</attrib>
 							<attrib name="340">false</attrib>
 						</attribs>
 					</fieldAttribs>
@@ -6257,12 +6402,49 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">day</attrib>
-						<attrib name="id">9945</attrib>
+						<attrib name="name">trade_type</attrib>
+						<attrib name="id">33534</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">5</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>0: Long
+</t>
+						</p>
+						<p>
+							<t>1: Short</t>
+						</p>
+					</docs>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">entry_time</attrib>
+						<attrib name="id">33113</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">46</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6285,12 +6467,96 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">open_profit</attrib>
-						<attrib name="id">9948</attrib>
+						<attrib name="name">entry_value</attrib>
+						<attrib name="id">33251</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">49</attrib>
+						<attrib name="type">32779</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">exit_time</attrib>
+						<attrib name="id">33525</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">46</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">exit_value</attrib>
+						<attrib name="id">33529</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">32779</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">gross_profit</attrib>
+						<attrib name="id">33531</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">32779</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6313,64 +6579,8 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">closed_profit</attrib>
-						<attrib name="id">21108</attrib>
-						<attrib name="onDelete">n</attrib>
-						<attrib name="onUpdate">n</attrib>
-						<attrib name="refTable">0</attrib>
-						<attrib name="type">49</attrib>
-					</attribs>
-					<modsConfig/>
-				</field>
-				<field>
-					<fieldAttribs>
-						<attribs>
-							<attrib name="86">false</attrib>
-							<attrib name="85">false</attrib>
-							<attrib name="84">false</attrib>
-							<attrib name="83">false</attrib>
-							<attrib name="17">true</attrib>
-							<attrib name="16">false</attrib>
-							<attrib name="15">false</attrib>
-							<attrib name="339"/>
-							<attrib name="338">false</attrib>
-							<attrib name="340">false</attrib>
-						</attribs>
-					</fieldAttribs>
-					<attribs>
-						<attrib name="comment"/>
-						<attrib name="matchType">s</attrib>
-						<attrib name="refField">0</attrib>
-						<attrib name="name">position</attrib>
-						<attrib name="id">10154</attrib>
-						<attrib name="onDelete">n</attrib>
-						<attrib name="onUpdate">n</attrib>
-						<attrib name="refTable">0</attrib>
-						<attrib name="type">5</attrib>
-					</attribs>
-					<modsConfig/>
-				</field>
-				<field>
-					<fieldAttribs>
-						<attribs>
-							<attrib name="86">false</attrib>
-							<attrib name="85">false</attrib>
-							<attrib name="84">false</attrib>
-							<attrib name="83">false</attrib>
-							<attrib name="17">true</attrib>
-							<attrib name="16">false</attrib>
-							<attrib name="15">false</attrib>
-							<attrib name="339"/>
-							<attrib name="338">false</attrib>
-							<attrib name="340">false</attrib>
-						</attribs>
-					</fieldAttribs>
-					<attribs>
-						<attrib name="comment"/>
-						<attrib name="matchType">s</attrib>
-						<attrib name="refField">0</attrib>
-						<attrib name="name">num_trades</attrib>
-						<attrib name="id">10693</attrib>
+						<attrib name="name">num_contracts</attrib>
+						<attrib name="id">33679</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -7505,8 +7715,8 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 			</query>
 			<query>
 				<attribs>
-					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">UPDATE instrument set status=0 where id=2</attrib>
+					<attrib name="name">Rename</attrib>
+					<attrib name="sqlCode">ALTER TABLE broker_product CHANGE product_broker_id broker_product_id int not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -8595,7 +8805,7 @@ where d1.day=d2.day and d1.trading_system_id=d2.trading_system_id and d1.open_pr
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">cost_per_trade</attrib>
+						<attrib name="name">cost_per_operation</attrib>
 						<attrib name="id">32470</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -10081,8 +10291,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
+						<attrib name="name">up_volume</attrib>
 						<attrib name="id">26960</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34089</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -10322,8 +10556,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27049</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34093</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34109</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -10563,8 +10821,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27071</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34095</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34111</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -10804,8 +11086,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27093</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34097</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34113</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -11045,8 +11351,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27139</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34099</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34115</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -11286,8 +11616,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27388</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34101</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34117</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -11527,8 +11881,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27406</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34103</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34119</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
@@ -11768,8 +12146,32 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">volume</attrib>
-						<attrib name="id">27424</attrib>
+						<attrib name="name">up_volume</attrib>
+						<attrib name="id">34105</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_volume</attrib>
+						<attrib name="id">34121</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
