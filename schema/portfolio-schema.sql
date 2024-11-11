@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 154
+-- === Build : 158
 -- ======================================================================
 
 CREATE TABLE trading_system
@@ -28,6 +28,7 @@ CREATE TABLE trading_system
     active              tinyint       not null,
     status              tinyint       not null,
     suggested_action    tinyint       not null,
+    last_update         datetime      not null default CURRENT_TIMESTAMP,
 
     primary key(id)
   )
@@ -40,17 +41,17 @@ CREATE INDEX trading_systemIDX1 ON trading_system(username);
 CREATE TABLE trading_filter
   (
     trading_system_id  int,
-    equ_avg_enabled    tinyint   not null,
-    equ_avg_len        tinyint   not null,
-    pos_pro_enabled    tinyint   not null,
-    pos_pro_len        tinyint   not null,
-    win_per_enabled    tinyint   not null,
-    win_per_len        tinyint   not null,
-    win_per_value      tinyint   not null,
-    old_new_enabled    tinyint   not null,
-    old_new_old_len    tinyint   not null,
-    old_new_old_perc   tinyint   not null,
-    old_new_new_len    tinyint   not null,
+    equ_avg_enabled    tinyint    not null,
+    equ_avg_len        smallint   not null,
+    pos_pro_enabled    tinyint    not null,
+    pos_pro_len        smallint   not null,
+    win_per_enabled    tinyint    not null,
+    win_per_len        tinyint    not null,
+    win_per_value      tinyint    not null,
+    old_new_enabled    tinyint    not null,
+    old_new_old_len    smallint   not null,
+    old_new_old_perc   smallint   not null,
+    old_new_new_len    smallint   not null,
 
     primary key(trading_system_id),
 

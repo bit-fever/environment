@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">154</attrib>
-		<attrib name="serial">34934</attrib>
+		<attrib name="build">158</attrib>
+		<attrib name="serial">35904</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -5075,7 +5075,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table trading_system add suggested_action tinyint not null</attrib>
+					<attrib name="sqlCode">alter table trading_system add last_update datetime not null default current_timestamp</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5872,9 +5872,9 @@ order by name, day</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">suggested_action</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">suggested_action</attrib>
 						<attrib name="id">34932</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5900,6 +5900,34 @@ order by name, day</attrib>
 </t>
 						</p>
 					</docs>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339">CURRENT_TIMESTAMP</attrib>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">last_update</attrib>
+						<attrib name="id">34936</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">46</attrib>
+					</attribs>
+					<modsConfig/>
 				</field>
 			</table>
 			<table>
@@ -6026,7 +6054,7 @@ order by name, day</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">6</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6082,7 +6110,7 @@ order by name, day</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">6</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6222,7 +6250,7 @@ order by name, day</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">6</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6250,7 +6278,7 @@ order by name, day</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">6</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6278,7 +6306,7 @@ order by name, day</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">6</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
