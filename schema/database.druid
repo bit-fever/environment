@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">158</attrib>
-		<attrib name="serial">35904</attrib>
+		<attrib name="build">159</attrib>
+		<attrib name="serial">35916</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -6303,6 +6303,90 @@ order by name, day</attrib>
 						<attrib name="refField">0</attrib>
 						<attrib name="name">old_new_new_len</attrib>
 						<attrib name="id">24418</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">6</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">trendline_enabled</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">35906</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">trendline_len</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">35910</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">6</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">trendline_value</attrib>
+						<attrib name="id">35914</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
