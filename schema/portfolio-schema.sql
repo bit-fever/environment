@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 158
+-- === Build : 170
 -- ======================================================================
 
 CREATE TABLE trading_system
@@ -10,25 +10,33 @@ CREATE TABLE trading_system
     username            varchar(32)   not null,
     workspace_code      varchar(36)   unique not null,
     name                varchar(64)   not null,
-    first_trade         datetime,
-    last_trade          datetime,
-    lm_net_profit       double,
-    lm_net_avg_trade    double,
-    lm_num_trades       int,
+    scope               char(2)       not null,
+    timeframe           int           not null,
+    data_product_id     int           not null,
+    data_symbol         varchar(16)   not null,
     broker_product_id   int           not null,
     broker_symbol       varchar(16)   not null,
     point_value         float         not null,
     cost_per_operation  float         not null,
     margin_value        float         not null,
     increment           double        not null,
+    market_type         char(2)       not null,
     currency_id         int           not null,
     currency_code       varchar(16)   not null,
+    trading_session_id  int           not null,
+    session_name        varchar(32)   not null,
+    session_config      text          not null,
     running             tinyint       not null,
     activation          tinyint       not null,
     active              tinyint       not null,
     status              tinyint       not null,
     suggested_action    tinyint       not null,
+    first_trade         datetime,
+    last_trade          datetime,
     last_update         datetime      not null default CURRENT_TIMESTAMP,
+    last_net_profit     double,
+    last_net_avg_trade  double,
+    last_num_trades     int,
 
     primary key(id)
   )
@@ -52,6 +60,9 @@ CREATE TABLE trading_filter
     old_new_old_len    smallint   not null,
     old_new_old_perc   smallint   not null,
     old_new_new_len    smallint   not null,
+    trendline_enabled  tinyint    not null,
+    trendline_len      smallint   not null,
+    trendline_value    smallint   not null,
 
     primary key(trading_system_id),
 

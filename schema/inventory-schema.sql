@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 146
+-- === Build : 165
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -178,6 +178,8 @@ CREATE TABLE trading_system
     trading_session_id  int           not null,
     workspace_code      varchar(36)   unique not null,
     name                varchar(64)   not null,
+    scope               char(2)       not null,
+    timeframe           int           not null,
     created_at          datetime      not null,
     updated_at          datetime,
 
