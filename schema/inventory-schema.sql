@@ -1,26 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 165
--- ======================================================================
-
-CREATE TABLE portfolio
-  (
-    id          int           auto_increment,
-    username    varchar(32)   not null,
-    parent_id   int,
-    name        varchar(64)   not null,
-    created_at  datetime      not null,
-    updated_at  datetime,
-
-    primary key(id),
-
-    foreign key(parent_id) references portfolio(id)
-  )
- ENGINE = InnoDB ;
-
-CREATE INDEX portfolioIDX1 ON portfolio(username);
-
+-- === Build : 178
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -75,6 +56,25 @@ CREATE TABLE connection
  ENGINE = InnoDB ;
 
 CREATE INDEX connectionIDX1 ON connection(username);
+
+-- ======================================================================
+
+CREATE TABLE agent_profile
+  (
+    id            int            auto_increment,
+    username      varchar(32)    not null,
+    name          varchar(64)    not null,
+    remote_url    varchar(255)   not null,
+    ssl_key_ref   varchar(36),
+    ssl_cert_ref  varchar(36),
+    created_at    datetime       not null,
+    updated_at    datetime,
+
+    primary key(id)
+  )
+ ENGINE = InnoDB ;
+
+CREATE INDEX agent_profileIDX1 ON agent_profile(username);
 
 -- ======================================================================
 
@@ -170,25 +170,28 @@ CREATE INDEX broker_instrumentIDX1 ON broker_instrument(broker_product_id);
 
 CREATE TABLE trading_system
   (
-    id                  int           auto_increment,
-    portfolio_id        int           not null,
-    username            varchar(32)   not null,
-    data_product_id     int           not null,
-    broker_product_id   int           not null,
-    trading_session_id  int           not null,
-    workspace_code      varchar(36)   unique not null,
-    name                varchar(64)   not null,
-    scope               char(2)       not null,
-    timeframe           int           not null,
-    created_at          datetime      not null,
+    id                  int            auto_increment,
+    username            varchar(32)    not null,
+    data_product_id     int            not null,
+    broker_product_id   int            not null,
+    trading_session_id  int            not null,
+    name                varchar(64)    not null,
+    scope               char(2)        not null,
+    timeframe           int            not null,
+    strategy_type       char(2)        not null,
+    overnight           tinyint        not null,
+    tags                varchar(255),
+    agent_profile_id    int,
+    external_ref        varchar(64),
+    created_at          datetime       not null,
     updated_at          datetime,
 
     primary key(id),
 
-    foreign key(portfolio_id) references portfolio(id),
     foreign key(data_product_id) references data_product(id),
     foreign key(broker_product_id) references broker_product(id),
-    foreign key(trading_session_id) references trading_session(id)
+    foreign key(trading_session_id) references trading_session(id),
+    foreign key(agent_profile_id) references agent_profile(id)
   )
  ENGINE = InnoDB ;
 
