@@ -1,7 +1,26 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 171
+-- === Build : 184
+-- ======================================================================
+
+CREATE TABLE portfolio
+  (
+    id          int           auto_increment,
+    username    varchar(32)   not null,
+    parent_id   int,
+    name        varchar(64)   not null,
+    created_at  datetime      not null,
+    updated_at  datetime,
+
+    primary key(id),
+
+    foreign key(parent_id) references portfolio(id)
+  )
+ ENGINE = InnoDB ;
+
+CREATE INDEX portfolioIDX1 ON portfolio(username);
+
 -- ======================================================================
 
 CREATE TABLE trading_system
@@ -26,6 +45,7 @@ CREATE TABLE trading_system
     trading_session_id  int           not null,
     session_name        varchar(32)   not null,
     session_config      text          not null,
+    external            tinyint       not null,
     running             tinyint       not null,
     auto_activation     tinyint       not null,
     active              tinyint       not null,
@@ -74,15 +94,17 @@ CREATE TABLE trading_filter
 
 CREATE TABLE trade
   (
-    id                 int        auto_increment,
-    trading_system_id  int        not null,
-    trade_type         tinyint    not null,
-    entry_time         datetime   not null,
-    entry_value        double     not null,
-    exit_time          datetime,
-    exit_value         double,
+    id                 int           auto_increment,
+    trading_system_id  int           not null,
+    trade_type         char(2)       not null,
+    entry_date         datetime      not null,
+    entry_price        double        not null,
+    entry_label        varchar(64),
+    exit_date          datetime,
+    exit_price         double,
+    exit_label         varchar(64),
     gross_profit       double,
-    num_contracts      int        not null,
+    contracts          int           not null,
 
     primary key(id),
 

@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">178</attrib>
-		<attrib name="serial">40783</attrib>
+		<attrib name="build">184</attrib>
+		<attrib name="serial">41465</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1331,9 +1331,9 @@
 					<attribs>
 						<attrib name="name">currency</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">497</attrib>
+						<attrib name="locY">588</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">345</attrib>
+						<attrib name="locX">326</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -1344,26 +1344,13 @@
 					<attribs>
 						<attrib name="name">connection</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">652</attrib>
+						<attrib name="locY">754</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">314</attrib>
+						<attrib name="locX">272</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
 						<table id="52"/>
-					</tables>
-				</erEntity>
-				<erEntity>
-					<attribs>
-						<attrib name="name">portfolio</attrib>
-						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">18</attrib>
-						<attrib name="details">-</attrib>
-						<attrib name="locX">625</attrib>
-					</attribs>
-					<modsConfig/>
-					<tables>
-						<table id="21122"/>
 					</tables>
 				</erEntity>
 				<erEntity>
@@ -1396,9 +1383,9 @@
 					<attribs>
 						<attrib name="name">exchange</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">281</attrib>
+						<attrib name="locY">374</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">319</attrib>
+						<attrib name="locX">322</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -1709,7 +1696,7 @@
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
-							<attrib name="338">false</attrib>
+							<attrib name="338">true</attrib>
 							<attrib name="340">true</attrib>
 						</attribs>
 					</fieldAttribs>
@@ -2071,7 +2058,7 @@
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
-							<attrib name="338">false</attrib>
+							<attrib name="338">true</attrib>
 							<attrib name="340">false</attrib>
 						</attribs>
 					</fieldAttribs>
@@ -4039,9 +4026,9 @@
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">id</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">id</attrib>
 						<attrib name="id">37590</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -4067,9 +4054,9 @@
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">username</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">username</attrib>
 						<attrib name="id">37594</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -4095,9 +4082,9 @@
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">name</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">name</attrib>
 						<attrib name="id">37598</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -4207,9 +4194,42 @@
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">created_at</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">scan_interval</attrib>
+						<attrib name="id">40784</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>In min</t>
+						</p>
+					</docs>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">created_at</attrib>
 						<attrib name="id">39617</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -4235,9 +4255,9 @@
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">updated_at</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">updated_at</attrib>
 						<attrib name="id">39621</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6381,6 +6401,34 @@ order by name, day</attrib>
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
+						<attrib name="name">external</attrib>
+						<attrib name="id">41138</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
 						<attrib name="name">running</attrib>
 						<attrib name="id">34523</attrib>
 						<attrib name="onDelete">n</attrib>
@@ -7296,7 +7344,7 @@ order by name, day</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">23283</attrib>
 					</attribs>
 					<modsConfig/>
 					<docs>
@@ -7328,7 +7376,7 @@ order by name, day</attrib>
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">entry_time</attrib>
+						<attrib name="name">entry_date</attrib>
 						<attrib name="id">33113</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -7356,7 +7404,7 @@ order by name, day</attrib>
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">entry_value</attrib>
+						<attrib name="name">entry_price</attrib>
 						<attrib name="id">33251</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -7384,7 +7432,35 @@ order by name, day</attrib>
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">exit_time</attrib>
+						<attrib name="name">entry_label</attrib>
+						<attrib name="id">41300</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">8775</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">exit_date</attrib>
 						<attrib name="id">33525</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -7412,12 +7488,40 @@ order by name, day</attrib>
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">exit_value</attrib>
+						<attrib name="name">exit_price</attrib>
 						<attrib name="id">33529</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
 						<attrib name="type">32779</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">exit_label</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">41462</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">8775</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -7468,7 +7572,7 @@ order by name, day</attrib>
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">num_contracts</attrib>
+						<attrib name="name">contracts</attrib>
 						<attrib name="id">33679</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>

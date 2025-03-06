@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 178
+-- === Build : 183
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -61,14 +61,15 @@ CREATE INDEX connectionIDX1 ON connection(username);
 
 CREATE TABLE agent_profile
   (
-    id            int            auto_increment,
-    username      varchar(32)    not null,
-    name          varchar(64)    not null,
-    remote_url    varchar(255)   not null,
-    ssl_key_ref   varchar(36),
-    ssl_cert_ref  varchar(36),
-    created_at    datetime       not null,
-    updated_at    datetime,
+    id             int            auto_increment,
+    username       varchar(32)    not null,
+    name           varchar(64)    not null,
+    remote_url     varchar(255)   not null,
+    ssl_key_ref    varchar(36),
+    ssl_cert_ref   varchar(36),
+    scan_interval  int            not null,
+    created_at     datetime       not null,
+    updated_at     datetime,
 
     primary key(id)
   )
@@ -187,6 +188,7 @@ CREATE TABLE trading_system
     updated_at          datetime,
 
     primary key(id),
+    unique(username,external_ref),
 
     foreign key(data_product_id) references data_product(id),
     foreign key(broker_product_id) references broker_product(id),
