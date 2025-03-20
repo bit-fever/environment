@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 184
+-- === Build : 189
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -26,39 +26,43 @@ CREATE INDEX portfolioIDX1 ON portfolio(username);
 CREATE TABLE trading_system
   (
     id                  int,
-    username            varchar(32)   not null,
-    workspace_code      varchar(36)   unique not null,
-    name                varchar(64)   not null,
-    scope               char(2)       not null,
-    timeframe           int           not null,
-    data_product_id     int           not null,
-    data_symbol         varchar(16)   not null,
-    broker_product_id   int           not null,
-    broker_symbol       varchar(16)   not null,
-    point_value         float         not null,
-    cost_per_operation  float         not null,
-    margin_value        float         not null,
-    increment           double        not null,
-    market_type         char(2)       not null,
-    currency_id         int           not null,
-    currency_code       varchar(16)   not null,
-    trading_session_id  int           not null,
-    session_name        varchar(32)   not null,
-    session_config      text          not null,
-    external            tinyint       not null,
-    running             tinyint       not null,
-    auto_activation     tinyint       not null,
-    active              tinyint       not null,
-    status              tinyint       not null,
-    suggested_action    tinyint       not null,
+    username            varchar(32)    not null,
+    name                varchar(64)    not null,
+    scope               char(2)        not null,
+    timeframe           int            not null,
+    data_product_id     int            not null,
+    data_symbol         varchar(16)    not null,
+    broker_product_id   int            not null,
+    broker_symbol       varchar(16)    not null,
+    point_value         float          not null,
+    cost_per_operation  float          not null,
+    margin_value        float          not null,
+    increment           double         not null,
+    market_type         char(2)        not null,
+    currency_id         int            not null,
+    currency_code       varchar(16)    not null,
+    trading_session_id  int            not null,
+    session_name        varchar(32)    not null,
+    session_config      text           not null,
+    external            tinyint        not null,
+    strategy_type       char(2)        not null,
+    overnight           tinyint        not null,
+    tags                varchar(255),
+    running             tinyint        not null,
+    auto_activation     tinyint        not null,
+    active              tinyint        not null,
+    status              tinyint        not null,
+    suggested_action    tinyint        not null,
     first_trade         datetime,
     last_trade          datetime,
-    last_update         datetime      not null default CURRENT_TIMESTAMP,
     last_net_profit     double,
     last_net_avg_trade  double,
     last_num_trades     int,
+    portfolio_id        int,
 
-    primary key(id)
+    primary key(id),
+
+    foreign key(portfolio_id) references portfolio(id)
   )
  ENGINE = InnoDB ;
 
