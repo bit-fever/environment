@@ -1,0 +1,34 @@
+#---------------------------------------------------------
+#--- File exported in DDF format on 2025-03-17 09:04:42
+#---
+#--- SELECT id,username,parent_id,name,created_at,updated_at FROM inventory.portfolio
+#---------------------------------------------------------
+
+[INFO]
+version=3
+table=portfolio
+schema=inventory
+
+[FIELDS]
+id,            INTEGER,    K
+username,      VARCHAR,    N
+parent_id,     INTEGER,    N
+name,          VARCHAR,    N
+created_at,    TIMESTAMP,  N
+updated_at,    TIMESTAMP,  N
+
+[INSERT]
+1	user		Main	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+2	user		Development	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+3	user	1	Indexes	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+4	user	1	Commodities	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+5	user	1	Energies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+6	user	1	Currencies	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+7	user	3	Nasdaq	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+8	user	3	Mini S&P	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+9	user	4	Gold	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+10	user	5	Crude Oil	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+11	user	6	British Pound	2023-08-11 09:48:41.000	2023-08-11 09:48:41.000
+12	user	3	DAX	2024-07-05 17:00:00.000	2024-07-05 17:00:00.000
+13	user	3	Dow Jones	2024-08-27 17:32:00.000	
+14	user	6	Euro FX	2025-01-02 13:10:00.000	
