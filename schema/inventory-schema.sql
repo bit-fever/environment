@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 189
+-- === Build : 190
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -177,13 +177,13 @@ CREATE TABLE trading_system
     broker_product_id   int            not null,
     trading_session_id  int            not null,
     name                varchar(64)    not null,
-    scope               char(2)        not null,
     timeframe           int            not null,
     strategy_type       char(2)        not null,
     overnight           tinyint        not null,
     tags                varchar(255),
     agent_profile_id    int,
     external_ref        varchar(64),
+    finalized           tinyint        not null,
     created_at          datetime       not null,
     updated_at          datetime,
 

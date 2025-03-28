@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">189</attrib>
-		<attrib name="serial">41804</attrib>
+		<attrib name="build">191</attrib>
+		<attrib name="serial">42006</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1238,7 +1238,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table product_broker drop column local_class</attrib>
+					<attrib name="sqlCode">alter table trading_system add column finalized int not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -1844,48 +1844,6 @@
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">scope</attrib>
-						<attrib name="id">36105</attrib>
-						<attrib name="onDelete">n</attrib>
-						<attrib name="onUpdate">n</attrib>
-						<attrib name="refTable">0</attrib>
-						<attrib name="type">21343</attrib>
-					</attribs>
-					<modsConfig/>
-					<docs>
-						<p>
-							<t>DV: Development</t>
-						</p>
-						<p>
-							<t>RD: Ready</t>
-						</p>
-						<p>
-							<t>TR: Trading</t>
-						</p>
-						<p>
-							<t>RV: Review</t>
-						</p>
-					</docs>
-				</field>
-				<field>
-					<fieldAttribs>
-						<attribs>
-							<attrib name="86">false</attrib>
-							<attrib name="85">false</attrib>
-							<attrib name="84">false</attrib>
-							<attrib name="83">false</attrib>
-							<attrib name="17">true</attrib>
-							<attrib name="16">false</attrib>
-							<attrib name="15">false</attrib>
-							<attrib name="339"/>
-							<attrib name="338">false</attrib>
-							<attrib name="340">false</attrib>
-						</attribs>
-					</fieldAttribs>
-					<attribs>
-						<attrib name="comment"/>
-						<attrib name="matchType">s</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="name">timeframe</attrib>
 						<attrib name="id">36489</attrib>
 						<attrib name="onDelete">n</attrib>
@@ -2070,6 +2028,48 @@
 						<attrib name="type">2213</attrib>
 					</attribs>
 					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">finalized</attrib>
+						<attrib name="id">36105</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>DV: Development</t>
+						</p>
+						<p>
+							<t>RD: Ready</t>
+						</p>
+						<p>
+							<t>TR: Trading</t>
+						</p>
+						<p>
+							<t>RV: Review</t>
+						</p>
+					</docs>
 				</field>
 				<field>
 					<fieldAttribs>
@@ -5376,7 +5376,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">ALTER TABLE trading_system CHANGE runnning running tinyint not null</attrib>
+					<attrib name="sqlCode">ALTER TABLE trading_system drop column scope</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5414,7 +5414,7 @@ order by name, day</attrib>
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table trading_system add timeframe int not null</attrib>
+					<attrib name="sqlCode">alter table trading_system add trading int not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5837,34 +5837,6 @@ order by name, day</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
 						<attrib name="type">8775</attrib>
-					</attribs>
-					<modsConfig/>
-				</field>
-				<field>
-					<fieldAttribs>
-						<attribs>
-							<attrib name="86">false</attrib>
-							<attrib name="85">false</attrib>
-							<attrib name="84">false</attrib>
-							<attrib name="83">false</attrib>
-							<attrib name="17">true</attrib>
-							<attrib name="16">false</attrib>
-							<attrib name="15">false</attrib>
-							<attrib name="339"/>
-							<attrib name="338">false</attrib>
-							<attrib name="340">false</attrib>
-						</attribs>
-					</fieldAttribs>
-					<attribs>
-						<attrib name="comment"/>
-						<attrib name="matchType">s</attrib>
-						<attrib name="refField">0</attrib>
-						<attrib name="name">scope</attrib>
-						<attrib name="id">41641</attrib>
-						<attrib name="onDelete">n</attrib>
-						<attrib name="onUpdate">n</attrib>
-						<attrib name="refTable">0</attrib>
-						<attrib name="type">23283</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6461,6 +6433,90 @@ order by name, day</attrib>
 						<attrib name="type">33</attrib>
 					</attribs>
 					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">finalized</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">42000</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>DV: Development</t>
+						</p>
+						<p>
+							<t>RD: Ready</t>
+						</p>
+						<p>
+							<t>TR: Trading</t>
+						</p>
+						<p>
+							<t>RV: Review</t>
+						</p>
+					</docs>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">trading</attrib>
+						<attrib name="id">42004</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">18</attrib>
+					</attribs>
+					<modsConfig/>
+					<docs>
+						<p>
+							<t>DV: Development</t>
+						</p>
+						<p>
+							<t>RD: Ready</t>
+						</p>
+						<p>
+							<t>TR: Trading</t>
+						</p>
+						<p>
+							<t>RV: Review</t>
+						</p>
+					</docs>
 				</field>
 				<field>
 					<fieldAttribs>
