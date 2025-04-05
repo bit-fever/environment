@@ -2,7 +2,7 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">191</attrib>
+		<attrib name="build">192</attrib>
 		<attrib name="serial">42006</attrib>
 	</attribs>
 	<database>
@@ -1696,7 +1696,7 @@
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
-							<attrib name="338">true</attrib>
+							<attrib name="338">false</attrib>
 							<attrib name="340">true</attrib>
 						</attribs>
 					</fieldAttribs>
@@ -2012,7 +2012,7 @@
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
-							<attrib name="338">true</attrib>
+							<attrib name="338">false</attrib>
 							<attrib name="340">false</attrib>
 						</attribs>
 					</fieldAttribs>
@@ -5418,6 +5418,13 @@ order by name, day</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
+			<query>
+				<attribs>
+					<attrib name="name">-UnNamed-</attrib>
+					<attrib name="sqlCode">SELECT sum(gross_profit) FROM trade WHERE trading_system_id=8 and exit_date &gt;= '2024-12-29' </attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
 		</queries>
 		<erViews>
 			<erView>
@@ -6349,9 +6356,9 @@ order by name, day</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">strategy_type</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">strategy_type</attrib>
 						<attrib name="id">41630</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6395,9 +6402,9 @@ order by name, day</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">overnight</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">overnight</attrib>
 						<attrib name="id">41634</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6423,9 +6430,9 @@ order by name, day</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">tags</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">tags</attrib>
 						<attrib name="id">41638</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6451,9 +6458,9 @@ order by name, day</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">finalized</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">finalized</attrib>
 						<attrib name="id">42000</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>

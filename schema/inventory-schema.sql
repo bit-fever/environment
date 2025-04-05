@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 190
+-- === Build : 192
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -188,7 +188,6 @@ CREATE TABLE trading_system
     updated_at          datetime,
 
     primary key(id),
-    unique(username,external_ref),
 
     foreign key(data_product_id) references data_product(id),
     foreign key(broker_product_id) references broker_product(id),
