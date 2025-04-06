@@ -2,7 +2,7 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">192</attrib>
+		<attrib name="build">193</attrib>
 		<attrib name="serial">42006</attrib>
 	</attribs>
 	<database>
@@ -1246,6 +1246,20 @@
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
 					<attrib name="sqlCode">alter table trading_system add timeframe int not null</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">-UnNamed-</attrib>
+					<attrib name="sqlCode">alter table trading_system drop index trading_systemIDX2</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">-UnNamed-</attrib>
+					<attrib name="sqlCode">SELECT * FROM information_schema</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
