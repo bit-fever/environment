@@ -1,7 +1,7 @@
 #---------------------------------------------------------
-#--- File exported in DDF format on 2023-11-04 18:29:09
+#--- File exported in DDF format on 2025-05-04 19:45:27
 #---
-#--- SELECT id,code,name FROM inventory.currency
+#--- SELECT id,code,name,symbol,position FROM inventory.currency
 #---------------------------------------------------------
 
 [INFO]
@@ -13,7 +13,9 @@ schema=inventory
 id,            INTEGER,    K
 code,          VARCHAR,    N
 name,          VARCHAR,    N
+symbol,        VARCHAR,    N
+position,      INTEGER,    N
 
 [INSERT]
-1	USD	US Dollar
-2	EUR	Euro
+1	USD	US Dollar	$	0
+2	EUR	Euro	~20AC	1

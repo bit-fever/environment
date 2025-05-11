@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 192
+-- === Build : 196
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -23,9 +23,11 @@ CREATE INDEX trading_sessionIDX1 ON trading_session(username);
 
 CREATE TABLE currency
   (
-    id    int           auto_increment,
-    code  varchar(16)   unique not null,
-    name  varchar(32)   not null,
+    id        int           auto_increment,
+    code      varchar(16)   unique not null,
+    name      varchar(32)   not null,
+    symbol    varchar(8)    not null,
+    position  int           not null,
 
     primary key(id)
   )

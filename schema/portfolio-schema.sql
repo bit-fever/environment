@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 190
+-- === Build : 195
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -60,6 +60,7 @@ CREATE TABLE trading_system
     last_net_avg_trade  double,
     last_num_trades     int,
     portfolio_id        int,
+    timezone            varchar(32)    not null,
 
     primary key(id),
 
@@ -99,17 +100,21 @@ CREATE TABLE trading_filter
 
 CREATE TABLE trade
   (
-    id                 int           auto_increment,
-    trading_system_id  int           not null,
-    trade_type         char(2)       not null,
-    entry_date         datetime      not null,
-    entry_price        double        not null,
-    entry_label        varchar(64),
-    exit_date          datetime,
-    exit_price         double,
-    exit_label         varchar(64),
-    gross_profit       double,
-    contracts          int           not null,
+    id                     int           auto_increment,
+    trading_system_id      int           not null,
+    trade_type             char(2)       not null,
+    entry_date             datetime      not null,
+    entry_price            double        not null,
+    entry_label            varchar(64),
+    exit_date              datetime,
+    exit_price             double,
+    exit_label             varchar(64),
+    gross_profit           double,
+    contracts              int           not null,
+    entry_date_at_broker   datetime,
+    entry_price_at_broker  double,
+    exit_date_at_broker    datetime,
+    exit_price_at_broker   double,
 
     primary key(id),
 
