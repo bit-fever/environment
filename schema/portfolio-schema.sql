@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 195
+-- === Build : 199
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -89,6 +89,9 @@ CREATE TABLE trading_filter
     trendline_enabled  tinyint    not null,
     trendline_len      smallint   not null,
     trendline_value    smallint   not null,
+    drawdown_enabled   tinyint    not null,
+    drawdown_min       smallint   not null,
+    drawdown_max       smallint   not null,
 
     primary key(trading_system_id),
 
