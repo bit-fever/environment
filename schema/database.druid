@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">199</attrib>
-		<attrib name="serial">42432</attrib>
+		<attrib name="build">204</attrib>
+		<attrib name="serial">42613</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1259,7 +1259,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">SELECT * FROM information_schema</attrib>
+					<attrib name="sqlCode">SELECT id, external_ref FROM trading_system</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -1371,9 +1371,9 @@
 					<attribs>
 						<attrib name="name">trading_system</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">17</attrib>
+						<attrib name="locY">16</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">290</attrib>
+						<attrib name="locX">301</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -5432,7 +5432,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table trading_system add timezone varchar(32) not null default &quot;???&quot;</attrib>
+					<attrib name="sqlCode">alter table trading_system add external_ref varchar(64)</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -5446,7 +5446,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">ALTER TABLE trading_system drop column scope</attrib>
+					<attrib name="sqlCode">ALTER TABLE trading_system drop column external</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -6403,7 +6403,7 @@ order by t1.entry_date</attrib>
 							<attrib name="85">false</attrib>
 							<attrib name="84">false</attrib>
 							<attrib name="83">false</attrib>
-							<attrib name="17">true</attrib>
+							<attrib name="17">false</attrib>
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
@@ -6413,14 +6413,42 @@ order by t1.entry_date</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="matchType">s</attrib>
+						<attrib name="name">agent_profile_id</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">external</attrib>
-						<attrib name="id">41138</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">42434</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">external_ref</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">42611</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">8775</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -7464,9 +7492,9 @@ order by t1.entry_date</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">drawdown_enabled</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">drawdown_enabled</attrib>
 						<attrib name="id">42422</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -7492,9 +7520,9 @@ order by t1.entry_date</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">drawdown_min</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">drawdown_min</attrib>
 						<attrib name="id">42426</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -7520,9 +7548,9 @@ order by t1.entry_date</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">drawdown_max</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">drawdown_max</attrib>
 						<attrib name="id">42430</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>

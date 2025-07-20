@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 199
+-- === Build : 203
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -43,7 +43,8 @@ CREATE TABLE trading_system
     trading_session_id  int            not null,
     session_name        varchar(32)    not null,
     session_config      text           not null,
-    external            tinyint        not null,
+    agent_profile_id    int,
+    external_ref        varchar(64),
     strategy_type       char(2)        not null,
     overnight           tinyint        not null,
     tags                varchar(255),
