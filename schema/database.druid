@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">204</attrib>
-		<attrib name="serial">42613</attrib>
+		<attrib name="build">206</attrib>
+		<attrib name="serial">42618</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1245,7 +1245,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">alter table trading_system add timeframe int not null</attrib>
+					<attrib name="sqlCode">alter table connection add system_config_params text</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -1259,7 +1259,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">SELECT id, external_ref FROM trading_system</attrib>
+					<attrib name="sqlCode">ALTER TABLE connection drop column system_connect_params</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -1304,7 +1304,7 @@
 				</legend>
 				<erEntity>
 					<attribs>
-						<attrib name="name">product_data</attrib>
+						<attrib name="name">data_product</attrib>
 						<attrib name="colorId">18080</attrib>
 						<attrib name="locY">283</attrib>
 						<attrib name="details">-</attrib>
@@ -1317,11 +1317,11 @@
 				</erEntity>
 				<erEntity>
 					<attribs>
-						<attrib name="name">product_broker</attrib>
+						<attrib name="name">broker_product</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">266</attrib>
+						<attrib name="locY">219</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">606</attrib>
+						<attrib name="locX">671</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -1330,11 +1330,11 @@
 				</erEntity>
 				<erEntity>
 					<attribs>
-						<attrib name="name">instrument_broker</attrib>
+						<attrib name="name">broker_instrument</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">660</attrib>
+						<attrib name="locY">672</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">580</attrib>
+						<attrib name="locX">668</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -1345,9 +1345,9 @@
 					<attribs>
 						<attrib name="name">currency</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">588</attrib>
+						<attrib name="locY">441</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">326</attrib>
+						<attrib name="locX">466</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -1358,9 +1358,9 @@
 					<attribs>
 						<attrib name="name">connection</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">754</attrib>
+						<attrib name="locY">653</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">272</attrib>
+						<attrib name="locX">393</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -1397,9 +1397,9 @@
 					<attribs>
 						<attrib name="name">exchange</attrib>
 						<attrib name="colorId">18080</attrib>
-						<attrib name="locY">374</attrib>
+						<attrib name="locY">360</attrib>
 						<attrib name="details">-</attrib>
-						<attrib name="locX">322</attrib>
+						<attrib name="locX">258</attrib>
 					</attribs>
 					<modsConfig/>
 					<tables>
@@ -2771,7 +2771,7 @@
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">system_config</attrib>
+						<attrib name="name">system_config_params</attrib>
 						<attrib name="id">15114</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -5517,7 +5517,7 @@ order by t1.entry_date</attrib>
 					<attrib name="fieldsStyle">p</attrib>
 					<attrib name="nameSize">15</attrib>
 					<attrib name="nameStyle">bi</attrib>
-					<attrib name="name">Main</attrib>
+					<attrib name="name">main</attrib>
 					<attrib name="details">co</attrib>
 					<attrib name="showBgColor">true</attrib>
 					<attrib name="showAttribs">true</attrib>
@@ -5537,7 +5537,7 @@ order by t1.entry_date</attrib>
 					<color>
 						<attribs>
 							<attrib name="name">-UnNamed-</attrib>
-							<attrib name="id">12231</attrib>
+							<attrib name="id">42618</attrib>
 						</attribs>
 						<values>
 							<name red="0" green="0" blue="0"/>
@@ -5549,45 +5549,6 @@ order by t1.entry_date</attrib>
 						</values>
 					</color>
 				</legend>
-				<erEntity>
-					<attribs>
-						<attrib name="name">trading_system</attrib>
-						<attrib name="colorId">12231</attrib>
-						<attrib name="locY">21</attrib>
-						<attrib name="details">-</attrib>
-						<attrib name="locX">260</attrib>
-					</attribs>
-					<modsConfig/>
-					<tables>
-						<table id="23274"/>
-					</tables>
-				</erEntity>
-				<erEntity>
-					<attribs>
-						<attrib name="name">trading_filter</attrib>
-						<attrib name="colorId">12231</attrib>
-						<attrib name="locY">448</attrib>
-						<attrib name="details">-</attrib>
-						<attrib name="locX">413</attrib>
-					</attribs>
-					<modsConfig/>
-					<tables>
-						<table id="23533"/>
-					</tables>
-				</erEntity>
-				<erEntity>
-					<attribs>
-						<attrib name="name">daily_info</attrib>
-						<attrib name="colorId">12231</attrib>
-						<attrib name="locY">448</attrib>
-						<attrib name="details">-</attrib>
-						<attrib name="locX">30</attrib>
-					</attribs>
-					<modsConfig/>
-					<tables>
-						<table id="9839"/>
-					</tables>
-				</erEntity>
 			</erView>
 		</erViews>
 		<objects>
