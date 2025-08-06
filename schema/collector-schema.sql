@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 146
+-- === Build : 208
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -12,10 +12,11 @@ CREATE TABLE data_product
     system_code             varchar(8)    not null,
     connection_code         varchar(8)    not null,
     supports_multiple_data  tinyint       not null,
+    connected               tinyint       not null,
     timezone                varchar(32)   not null,
 
     primary key(id),
-    unique(symbol,username,system_code)
+    unique(symbol,username,connection_code)
   )
  ENGINE = InnoDB ;
 
@@ -30,7 +31,7 @@ CREATE TABLE data_instrument
     symbol           varchar(16)   not null,
     name             varchar(64)   not null,
     expiration_date  int,
-    is_continuous    tinyint       not null,
+    continuous       tinyint       not null,
     status           tinyint       not null,
     data_from        int,
     data_to          int,

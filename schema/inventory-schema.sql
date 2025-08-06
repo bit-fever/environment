@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 205
+-- === Build : 206
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -44,7 +44,7 @@ CREATE TABLE connection
     system_code             varchar(8)    not null,
     system_name             varchar(32)   not null,
     system_config_params    text,
-    instance_code           varchar(36),
+    connected               tinyint       not null,
     supports_data           tinyint       not null,
     supports_broker         tinyint       not null,
     supports_multiple_data  tinyint       not null,

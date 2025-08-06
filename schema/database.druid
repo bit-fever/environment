@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">206</attrib>
-		<attrib name="serial">42618</attrib>
+		<attrib name="build">208</attrib>
+		<attrib name="serial">42818</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1231,7 +1231,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">Rename</attrib>
-					<attrib name="sqlCode">ALTER TABLE broker_product CHANGE cost_per_trade cost_per_operation float</attrib>
+					<attrib name="sqlCode">ALTER TABLE connection CHANGE instance_code connected tinyint</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -2787,7 +2787,7 @@
 							<attrib name="85">false</attrib>
 							<attrib name="84">false</attrib>
 							<attrib name="83">false</attrib>
-							<attrib name="17">false</attrib>
+							<attrib name="17">true</attrib>
 							<attrib name="16">false</attrib>
 							<attrib name="15">false</attrib>
 							<attrib name="339"/>
@@ -2799,12 +2799,12 @@
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">instance_code</attrib>
+						<attrib name="name">connected</attrib>
 						<attrib name="id">15546</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">20084</attrib>
+						<attrib name="type">18</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -6374,9 +6374,9 @@ order by t1.entry_date</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">agent_profile_id</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">agent_profile_id</attrib>
 						<attrib name="id">42434</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -6402,9 +6402,9 @@ order by t1.entry_date</attrib>
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">external_ref</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">external_ref</attrib>
 						<attrib name="id">42611</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -9122,7 +9122,14 @@ order by t1.entry_date</attrib>
 			<query>
 				<attribs>
 					<attrib name="name">Rename</attrib>
-					<attrib name="sqlCode">ALTER TABLE broker_product CHANGE product_broker_id broker_product_id int not null</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_instrument CHANGE is_continuous continuous tinyint not null</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">-UnNamed-</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_product ADD COLUMN connected tinyint not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -9273,7 +9280,7 @@ order by t1.entry_date</attrib>
 								<attrib name="16">false</attrib>
 								<attrib name="15">false</attrib>
 								<attrib name="339"/>
-								<attrib name="338">true</attrib>
+								<attrib name="338">false</attrib>
 								<attrib name="340">false</attrib>
 							</attribs>
 						</fieldAttribs>
@@ -9301,7 +9308,7 @@ order by t1.entry_date</attrib>
 								<attrib name="16">false</attrib>
 								<attrib name="15">false</attrib>
 								<attrib name="339"/>
-								<attrib name="338">false</attrib>
+								<attrib name="338">true</attrib>
 								<attrib name="340">false</attrib>
 							</attribs>
 						</fieldAttribs>
@@ -9339,6 +9346,34 @@ order by t1.entry_date</attrib>
 							<attrib name="refField">0</attrib>
 							<attrib name="name">supports_multiple_data</attrib>
 							<attrib name="id">26476</attrib>
+							<attrib name="onDelete">n</attrib>
+							<attrib name="onUpdate">n</attrib>
+							<attrib name="refTable">0</attrib>
+							<attrib name="type">18</attrib>
+						</attribs>
+						<modsConfig/>
+					</field>
+					<field>
+						<fieldAttribs>
+							<attribs>
+								<attrib name="86">false</attrib>
+								<attrib name="85">false</attrib>
+								<attrib name="84">false</attrib>
+								<attrib name="83">false</attrib>
+								<attrib name="17">true</attrib>
+								<attrib name="16">false</attrib>
+								<attrib name="15">false</attrib>
+								<attrib name="339"/>
+								<attrib name="338">false</attrib>
+								<attrib name="340">false</attrib>
+							</attribs>
+						</fieldAttribs>
+						<attribs>
+							<attrib name="comment"/>
+							<attrib name="name">connected</attrib>
+							<attrib name="refField">0</attrib>
+							<attrib name="matchType">s</attrib>
+							<attrib name="id">42816</attrib>
 							<attrib name="onDelete">n</attrib>
 							<attrib name="onUpdate">n</attrib>
 							<attrib name="refTable">0</attrib>
@@ -9583,7 +9618,7 @@ order by t1.entry_date</attrib>
 							<attrib name="comment"/>
 							<attrib name="matchType">s</attrib>
 							<attrib name="refField">0</attrib>
-							<attrib name="name">is_continuous</attrib>
+							<attrib name="name">continuous</attrib>
 							<attrib name="id">21112</attrib>
 							<attrib name="onDelete">n</attrib>
 							<attrib name="onUpdate">n</attrib>
