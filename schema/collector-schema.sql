@@ -1,22 +1,23 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 208
+-- === Build : 212
 -- ======================================================================
 
 CREATE TABLE data_product
   (
     id                      int,
-    symbol                  varchar(16)   not null,
     username                varchar(32)   not null,
-    system_code             varchar(8)    not null,
     connection_code         varchar(8)    not null,
+    system_code             varchar(8)    not null,
+    symbol                  varchar(16)   not null,
     supports_multiple_data  tinyint       not null,
     connected               tinyint       not null,
     timezone                varchar(32)   not null,
+    status                  tinyint       not null,
 
     primary key(id),
-    unique(symbol,username,connection_code)
+    unique(username,connection_code,symbol)
   )
  ENGINE = InnoDB ;
 
@@ -30,7 +31,7 @@ CREATE TABLE data_instrument
     data_product_id  int           not null,
     symbol           varchar(16)   not null,
     name             varchar(64)   not null,
-    expiration_date  int,
+    expiration_date  datetime,
     continuous       tinyint       not null,
     status           tinyint       not null,
     data_from        int,
@@ -73,14 +74,16 @@ CREATE INDEX upload_jobIDX1 ON upload_job(data_instrument_id);
 CREATE TABLE broker_product
   (
     id                  int,
-    symbol              varchar(16)   not null,
     username            varchar(32)   not null,
+    connection_code     varchar(8)    not null,
+    symbol              varchar(16)   not null,
     name                varchar(64)   not null,
     point_value         float         not null,
     cost_per_operation  float         not null,
     currency_code       varchar(16)   not null,
 
-    primary key(id)
+    primary key(id),
+    unique(username,connection_code,symbol)
   )
  ENGINE = InnoDB ;
 
