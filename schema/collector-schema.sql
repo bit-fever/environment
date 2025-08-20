@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 212
+-- === Build : 234
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -15,59 +15,31 @@ CREATE TABLE data_product
     connected               tinyint       not null,
     timezone                varchar(32)   not null,
     status                  tinyint       not null,
+    months                  varchar(16),
+    roll_type               tinyint,
 
     primary key(id),
     unique(username,connection_code,symbol)
   )
  ENGINE = InnoDB ;
 
-CREATE INDEX data_productIDX1 ON data_product(username);
-
 -- ======================================================================
 
-CREATE TABLE data_instrument
+CREATE TABLE data_block
   (
-    id               int           auto_increment,
-    data_product_id  int           not null,
-    symbol           varchar(16)   not null,
-    name             varchar(64)   not null,
-    expiration_date  datetime,
-    continuous       tinyint       not null,
-    status           tinyint       not null,
-    data_from        int,
-    data_to          int,
+    id           int           auto_increment,
+    system_code  varchar(8)    not null,
+    root         varchar(16)   not null,
+    symbol       varchar(16)   not null,
+    status       tinyint       not null,
+    global       tinyint       not null,
+    data_from    int,
+    data_to      int,
+    progress     tinyint       not null,
 
-    primary key(id),
-    unique(data_product_id,symbol),
-
-    foreign key(data_product_id) references data_product(id)
+    primary key(id)
   )
  ENGINE = InnoDB ;
-
-CREATE INDEX data_instrumentIDX1 ON data_instrument(data_product_id);
-
--- ======================================================================
-
-CREATE TABLE upload_job
-  (
-    id                  int           auto_increment,
-    data_instrument_id  int           not null,
-    status              tinyint       not null,
-    filename            varchar(64)   not null,
-    error               text,
-    progress            tinyint       not null,
-    records             int           not null,
-    bytes               bigint        not null,
-    timezone            varchar(64)   not null,
-    parser              varchar(64)   not null,
-
-    primary key(id),
-
-    foreign key(data_instrument_id) references data_instrument(id)
-  )
- ENGINE = InnoDB ;
-
-CREATE INDEX upload_jobIDX1 ON upload_job(data_instrument_id);
 
 -- ======================================================================
 
@@ -91,16 +63,63 @@ CREATE INDEX broker_productIDX1 ON broker_product(username);
 
 -- ======================================================================
 
-CREATE TABLE loaded_period
+CREATE TABLE data_instrument
   (
-    id                  int   auto_increment,
-    data_instrument_id  int   not null,
-    day                 int   not null,
-    status              int   not null,
+    id               int           auto_increment,
+    data_block_id    int,
+    data_product_id  int           not null,
+    symbol           varchar(16)   not null,
+    name             varchar(64)   not null,
+    expiration_date  datetime,
+    continuous       tinyint       not null,
+    month            char(1),
+    roll_delta       double,
+
+    primary key(id),
+    unique(data_product_id,symbol),
+
+    foreign key(data_block_id) references data_block(id),
+    foreign key(data_product_id) references data_product(id)
+  )
+ ENGINE = InnoDB ;
+
+-- ======================================================================
+
+CREATE TABLE ingestion_job
+  (
+    id                  int           auto_increment,
+    data_instrument_id  int           not null,
+    data_block_id       int           not null,
+    filename            varchar(64)   not null,
+    records             int           not null,
+    bytes               bigint        not null,
+    timezone            varchar(64)   not null,
+    parser              varchar(64)   not null,
+    error               text,
 
     primary key(id),
 
-    foreign key(data_instrument_id) references data_instrument(id)
+    foreign key(data_instrument_id) references data_instrument(id),
+    foreign key(data_block_id) references data_block(id)
+  )
+ ENGINE = InnoDB ;
+
+-- ======================================================================
+
+CREATE TABLE download_job
+  (
+    id                  int       auto_increment,
+    data_instrument_id  int       not null,
+    data_block_id       int       not null,
+    load_from           int       not null,
+    load_to             int       not null,
+    priority            tinyint   not null,
+    error               text,
+
+    primary key(id),
+
+    foreign key(data_instrument_id) references data_instrument(id),
+    foreign key(data_block_id) references data_block(id)
   )
  ENGINE = InnoDB ;
 

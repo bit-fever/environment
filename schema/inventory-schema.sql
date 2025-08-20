@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 206
+-- === Build : 219
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -108,6 +108,8 @@ CREATE TABLE data_product
     name           varchar(64)   not null,
     market_type    char(2)       not null,
     product_type   char(2)       not null,
+    months         varchar(16),
+    roll_type      tinyint,
     created_at     datetime      not null,
     updated_at     datetime,
 
