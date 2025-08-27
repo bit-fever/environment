@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 234
+-- === Build : 238
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -108,12 +108,16 @@ CREATE TABLE ingestion_job
 
 CREATE TABLE download_job
   (
-    id                  int       auto_increment,
-    data_instrument_id  int       not null,
-    data_block_id       int       not null,
-    load_from           int       not null,
-    load_to             int       not null,
-    priority            tinyint   not null,
+    id                  int           auto_increment,
+    data_instrument_id  int           not null,
+    data_block_id       int           not null,
+    status              tinyint       not null,
+    load_from           int           not null,
+    load_to             int           not null,
+    priority            tinyint       not null,
+    user_connection     varchar(64),
+    curr_day            int           not null,
+    tot_days            int           not null,
     error               text,
 
     primary key(id),
