@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 219
+-- === Build : 246
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -100,18 +100,18 @@ CREATE TABLE exchange
 
 CREATE TABLE data_product
   (
-    id             int           auto_increment,
-    exchange_id    int           not null,
-    connection_id  int           not null,
-    username       varchar(32)   not null,
-    symbol         varchar(16)   not null,
-    name           varchar(64)   not null,
-    market_type    char(2)       not null,
-    product_type   char(2)       not null,
-    months         varchar(16),
-    roll_type      tinyint,
-    created_at     datetime      not null,
-    updated_at     datetime,
+    id                int           auto_increment,
+    exchange_id       int           not null,
+    connection_id     int           not null,
+    username          varchar(32)   not null,
+    symbol            varchar(16)   not null,
+    name              varchar(64)   not null,
+    market_type       char(2)       not null,
+    product_type      char(2)       not null,
+    months            varchar(16),
+    rollover_trigger  varchar(16),
+    created_at        datetime      not null,
+    updated_at        datetime,
 
     primary key(id),
     unique(connection_id,username,symbol),

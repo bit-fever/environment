@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 238
+-- === Build : 245
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -16,7 +16,7 @@ CREATE TABLE data_product
     timezone                varchar(32)   not null,
     status                  tinyint       not null,
     months                  varchar(16),
-    roll_type               tinyint,
+    rollover_trigger        varchar(16),
 
     primary key(id),
     unique(username,connection_code,symbol)
@@ -73,7 +73,8 @@ CREATE TABLE data_instrument
     expiration_date  datetime,
     continuous       tinyint       not null,
     month            char(1),
-    roll_delta       double,
+    rollover_date    datetime,
+    rollover_delta   double,
 
     primary key(id),
     unique(data_product_id,symbol),

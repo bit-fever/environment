@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">239</attrib>
-		<attrib name="serial">48127</attrib>
+		<attrib name="build">247</attrib>
+		<attrib name="serial">48687</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -1259,7 +1259,7 @@
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">ALTER TABLE connection drop column system_connect_params</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_product add column rollover_trigger varchar(16)</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -3356,12 +3356,12 @@
 						<attrib name="comment"/>
 						<attrib name="matchType">s</attrib>
 						<attrib name="refField">0</attrib>
-						<attrib name="name">roll_type</attrib>
+						<attrib name="name">rollover_trigger</attrib>
 						<attrib name="id">45864</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
 						<attrib name="refTable">0</attrib>
-						<attrib name="type">18</attrib>
+						<attrib name="type">2212</attrib>
 					</attribs>
 					<modsConfig/>
 				</field>
@@ -9250,7 +9250,7 @@ order by t1.entry_date</attrib>
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">ALTER TABLE data_product ADD COLUMN status tinyint not null</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_instrument ADD COLUMN rollover_delta double</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -9258,6 +9258,13 @@ order by t1.entry_date</attrib>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
 					<attrib name="sqlCode">CREATE UNIQUE INDEX broker_productIDX2 ON broker_product(symbol,username,connection_code);</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">-UnNamed-</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_instrument DROP COLUMN roll_delta</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -9755,12 +9762,12 @@ order by t1.entry_date</attrib>
 							<attrib name="comment"/>
 							<attrib name="matchType">s</attrib>
 							<attrib name="refField">0</attrib>
-							<attrib name="name">roll_type</attrib>
+							<attrib name="name">rollover_trigger</attrib>
 							<attrib name="id">46662</attrib>
 							<attrib name="onDelete">n</attrib>
 							<attrib name="onUpdate">n</attrib>
 							<attrib name="refTable">0</attrib>
-							<attrib name="type">18</attrib>
+							<attrib name="type">6114</attrib>
 						</attribs>
 						<modsConfig/>
 					</field>
@@ -10055,9 +10062,37 @@ order by t1.entry_date</attrib>
 						</fieldAttribs>
 						<attribs>
 							<attrib name="comment"/>
+							<attrib name="name">rollover_date</attrib>
+							<attrib name="refField">0</attrib>
+							<attrib name="matchType">s</attrib>
+							<attrib name="id">48487</attrib>
+							<attrib name="onDelete">n</attrib>
+							<attrib name="onUpdate">n</attrib>
+							<attrib name="refTable">0</attrib>
+							<attrib name="type">46</attrib>
+						</attribs>
+						<modsConfig/>
+					</field>
+					<field>
+						<fieldAttribs>
+							<attribs>
+								<attrib name="86">false</attrib>
+								<attrib name="85">false</attrib>
+								<attrib name="84">false</attrib>
+								<attrib name="83">false</attrib>
+								<attrib name="17">false</attrib>
+								<attrib name="16">false</attrib>
+								<attrib name="15">false</attrib>
+								<attrib name="339"/>
+								<attrib name="338">false</attrib>
+								<attrib name="340">false</attrib>
+							</attribs>
+						</fieldAttribs>
+						<attribs>
+							<attrib name="comment"/>
 							<attrib name="matchType">s</attrib>
 							<attrib name="refField">0</attrib>
-							<attrib name="name">roll_delta</attrib>
+							<attrib name="name">rollover_delta</attrib>
 							<attrib name="id">47040</attrib>
 							<attrib name="onDelete">n</attrib>
 							<attrib name="onUpdate">n</attrib>
@@ -12346,6 +12381,14 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 				</attribs>
 				<modsConfig/>
 			</query>
+			<query>
+				<attribs>
+					<attrib name="name">System 1m</attrib>
+					<attrib name="sqlCode">SELECT time at time zone 'America/Chicago',open,high,low,close, up_volume, down_volume, up_ticks, down_ticks, open_interest
+FROM system_data_1m where time &gt;= '2014-01-01T00:00:00-6' and symbol='ESM14'</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
 		</queries>
 		<erViews/>
 		<objects>
@@ -12626,9 +12669,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">up_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">up_ticks</attrib>
 						<attrib name="id">48069</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -12650,9 +12693,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">down_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_ticks</attrib>
 						<attrib name="id">48073</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -13011,9 +13054,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">open_interest</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">open_interest</attrib>
 						<attrib name="id">48113</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -13300,9 +13343,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">up_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">up_ticks</attrib>
 						<attrib name="id">48083</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -13324,9 +13367,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">down_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_ticks</attrib>
 						<attrib name="id">48099</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -13685,9 +13728,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">open_interest</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">open_interest</attrib>
 						<attrib name="id">48117</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -13974,9 +14017,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">up_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">up_ticks</attrib>
 						<attrib name="id">48087</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -13998,9 +14041,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">down_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_ticks</attrib>
 						<attrib name="id">48103</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -14359,9 +14402,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">open_interest</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">open_interest</attrib>
 						<attrib name="id">48121</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -14648,9 +14691,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">up_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">up_ticks</attrib>
 						<attrib name="id">48091</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -14672,9 +14715,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">down_ticks</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">down_ticks</attrib>
 						<attrib name="id">48107</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
@@ -15033,9 +15076,9 @@ CREATE INDEX user_time_index_60m ON user_data_60m(symbol, time DESC);
 					</fieldAttribs>
 					<attribs>
 						<attrib name="comment"/>
-						<attrib name="name">open_interest</attrib>
-						<attrib name="refField">0</attrib>
 						<attrib name="matchType">s</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="name">open_interest</attrib>
 						<attrib name="id">48125</attrib>
 						<attrib name="onDelete">n</attrib>
 						<attrib name="onUpdate">n</attrib>
