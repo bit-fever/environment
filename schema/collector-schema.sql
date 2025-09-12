@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 245
+-- === Build : 248
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -75,6 +75,7 @@ CREATE TABLE data_instrument
     month            char(1),
     rollover_date    datetime,
     rollover_delta   double,
+    rollover_status  tinyint       not null,
 
     primary key(id),
     unique(data_product_id,symbol),
