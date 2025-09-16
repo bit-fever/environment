@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">248</attrib>
-		<attrib name="serial">48870</attrib>
+		<attrib name="build">249</attrib>
+		<attrib name="serial">48892</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -8116,6 +8116,191 @@ order by t1.entry_date</attrib>
 					<modsConfig/>
 				</field>
 			</table>
+			<table>
+				<vars>
+					<list>
+						<header>
+							<elem>name</elem>
+							<elem>type</elem>
+							<elem>value</elem>
+							<elem>descr</elem>
+						</header>
+					</list>
+				</vars>
+				<triggers/>
+				<rules/>
+				<attribs>
+					<attrib name="comment"/>
+					<attrib name="name">daily_profit</attrib>
+					<attrib name="id">48871</attrib>
+					<attrib name="schema"/>
+					<attrib name="tempPK"/>
+					<attrib name="ghost">false</attrib>
+					<attrib name="tempFK"/>
+					<attrib name="tempOther"/>
+					<attrib name="sqlCommands"/>
+				</attribs>
+				<modsConfig>
+					<SqlGenModule>
+						<mysql>
+							<idx type="l">
+								<list>
+									<header>
+										<elem type="i">id</elem>
+										<elem type="s">index</elem>
+										<elem type="s">name</elem>
+									</header>
+									<row>
+										<elem>340</elem>
+										<elem>Idx1</elem>
+										<elem/>
+									</row>
+								</list>
+							</idx>
+						</mysql>
+					</SqlGenModule>
+				</modsConfig>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">true</attrib>
+							<attrib name="17">false</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">true</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">id</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">48874</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">true</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">trading_system_id</attrib>
+						<attrib name="refField">23277</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">48878</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">23274</attrib>
+						<attrib name="type">0</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">day</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">48890</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">gross_profit</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">48882</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">32779</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+				<field>
+					<fieldAttribs>
+						<attribs>
+							<attrib name="86">false</attrib>
+							<attrib name="85">false</attrib>
+							<attrib name="84">false</attrib>
+							<attrib name="83">false</attrib>
+							<attrib name="17">true</attrib>
+							<attrib name="16">false</attrib>
+							<attrib name="15">false</attrib>
+							<attrib name="339"/>
+							<attrib name="338">false</attrib>
+							<attrib name="340">false</attrib>
+						</attribs>
+					</fieldAttribs>
+					<attribs>
+						<attrib name="comment"/>
+						<attrib name="name">trades</attrib>
+						<attrib name="refField">0</attrib>
+						<attrib name="matchType">s</attrib>
+						<attrib name="id">48886</attrib>
+						<attrib name="onDelete">n</attrib>
+						<attrib name="onUpdate">n</attrib>
+						<attrib name="refTable">0</attrib>
+						<attrib name="type">5</attrib>
+					</attribs>
+					<modsConfig/>
+				</field>
+			</table>
 		</objects>
 	</database>
 	<database>
@@ -9250,7 +9435,7 @@ order by t1.entry_date</attrib>
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">ALTER TABLE data_instrument ADD COLUMN rollover_delta double</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_instrument ADD COLUMN rollover_status tinyint not null</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>

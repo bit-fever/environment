@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 203
+-- === Build : 249
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -127,6 +127,24 @@ CREATE TABLE trade
  ENGINE = InnoDB ;
 
 CREATE INDEX tradeIDX1 ON trade(trading_system_id);
+
+-- ======================================================================
+
+CREATE TABLE daily_profit
+  (
+    id                 int      auto_increment,
+    trading_system_id  int      not null,
+    day                int      not null,
+    gross_profit       double   not null,
+    trades             int      not null,
+
+    primary key(id),
+
+    foreign key(trading_system_id) references trading_system(id)
+  )
+ ENGINE = InnoDB ;
+
+CREATE INDEX daily_profitIDX1 ON daily_profit(trading_system_id);
 
 -- ======================================================================
 
