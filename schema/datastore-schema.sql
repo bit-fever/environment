@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Store
 -- ===
--- === Build : 239
+-- === Build : 253
 -- ======================================================================
 
 CREATE TABLE system_data_1m
@@ -84,6 +84,26 @@ CREATE TABLE system_data_60m
 
 -- ======================================================================
 
+CREATE TABLE system_data_1440m
+  (
+    time           timestamptz        not null,
+    symbol         text               not null,
+    system_code    text               not null,
+    open           double precision   not null,
+    high           double precision   not null,
+    low            double precision   not null,
+    close          double precision   not null,
+    up_volume      int                not null,
+    down_volume    int                not null,
+    up_ticks       int                not null,
+    down_ticks     int                not null,
+    open_interest  int                not null,
+
+    unique(time,symbol,system_code)
+  );
+
+-- ======================================================================
+
 CREATE TABLE user_data_1m
   (
     time           timestamptz        not null,
@@ -145,6 +165,26 @@ CREATE TABLE user_data_15m
 -- ======================================================================
 
 CREATE TABLE user_data_60m
+  (
+    time           timestamptz        not null,
+    symbol         text               not null,
+    product_id     int                not null,
+    open           double precision   not null,
+    high           double precision   not null,
+    low            double precision   not null,
+    close          double precision   not null,
+    up_volume      int                not null,
+    down_volume    int                not null,
+    up_ticks       int                not null,
+    down_ticks     int                not null,
+    open_interest  int                not null,
+
+    unique(time,symbol,product_id)
+  );
+
+-- ======================================================================
+
+CREATE TABLE user_data_1440m
   (
     time           timestamptz        not null,
     symbol         text               not null,
