@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Data Collector
 -- ===
--- === Build : 253
+-- === Build : 258
 -- ======================================================================
 
 CREATE TABLE data_product
@@ -65,17 +65,18 @@ CREATE INDEX broker_productIDX1 ON broker_product(username);
 
 CREATE TABLE data_instrument
   (
-    id               int           auto_increment,
-    data_block_id    int,
-    data_product_id  int           not null,
-    symbol           varchar(16)   not null,
-    name             varchar(64)   not null,
-    expiration_date  datetime,
-    continuous       tinyint       not null,
-    month            char(1),
-    rollover_date    datetime,
-    rollover_delta   double,
-    rollover_status  tinyint       not null,
+    id                  int           auto_increment,
+    data_block_id       int,
+    data_product_id     int           not null,
+    symbol              varchar(16)   not null,
+    name                varchar(64)   not null,
+    expiration_date     datetime,
+    continuous          tinyint       not null,
+    virtual_instrument  tinyint       not null,
+    month               char(1),
+    rollover_date       datetime,
+    rollover_delta      double,
+    rollover_status     tinyint       not null,
 
     primary key(id),
     unique(data_product_id,symbol),
@@ -118,6 +119,7 @@ CREATE TABLE download_job
     load_to             int           not null,
     priority            tinyint       not null,
     user_connection     varchar(64),
+    product_timezone    varchar(64)   not null,
     curr_day            int           not null,
     tot_days            int           not null,
     error               text,

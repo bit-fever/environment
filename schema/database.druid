@@ -2,8 +2,8 @@
 
 <project version="2">
 	<attribs>
-		<attrib name="build">253</attrib>
-		<attrib name="serial">51402</attrib>
+		<attrib name="build">258</attrib>
+		<attrib name="serial">51775</attrib>
 	</attribs>
 	<database>
 		<attribs>
@@ -9454,7 +9454,14 @@ order by t1.entry_date</attrib>
 			<query>
 				<attribs>
 					<attrib name="name">-UnNamed-</attrib>
-					<attrib name="sqlCode">ALTER TABLE data_instrument DROP COLUMN roll_delta</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_instrument ADD column virtual_instrument tinyint not null</attrib>
+				</attribs>
+				<modsConfig/>
+			</query>
+			<query>
+				<attribs>
+					<attrib name="name">-UnNamed-</attrib>
+					<attrib name="sqlCode">ALTER TABLE data_instrument DROP COLUMN virtuale</attrib>
 				</attribs>
 				<modsConfig/>
 			</query>
@@ -10200,6 +10207,34 @@ order by t1.entry_date</attrib>
 							<attrib name="refField">0</attrib>
 							<attrib name="name">continuous</attrib>
 							<attrib name="id">21112</attrib>
+							<attrib name="onDelete">n</attrib>
+							<attrib name="onUpdate">n</attrib>
+							<attrib name="refTable">0</attrib>
+							<attrib name="type">18</attrib>
+						</attribs>
+						<modsConfig/>
+					</field>
+					<field>
+						<fieldAttribs>
+							<attribs>
+								<attrib name="86">false</attrib>
+								<attrib name="85">false</attrib>
+								<attrib name="84">false</attrib>
+								<attrib name="83">false</attrib>
+								<attrib name="17">true</attrib>
+								<attrib name="16">false</attrib>
+								<attrib name="15">false</attrib>
+								<attrib name="339"/>
+								<attrib name="338">false</attrib>
+								<attrib name="340">false</attrib>
+							</attribs>
+						</fieldAttribs>
+						<attribs>
+							<attrib name="comment"/>
+							<attrib name="name">virtual_instrument</attrib>
+							<attrib name="refField">0</attrib>
+							<attrib name="matchType">s</attrib>
+							<attrib name="id">51404</attrib>
 							<attrib name="onDelete">n</attrib>
 							<attrib name="onUpdate">n</attrib>
 							<attrib name="refTable">0</attrib>
@@ -11181,6 +11216,39 @@ order by t1.entry_date</attrib>
 							<attrib name="type">26741</attrib>
 						</attribs>
 						<modsConfig/>
+					</field>
+					<field>
+						<fieldAttribs>
+							<attribs>
+								<attrib name="86">false</attrib>
+								<attrib name="85">false</attrib>
+								<attrib name="84">false</attrib>
+								<attrib name="83">false</attrib>
+								<attrib name="17">true</attrib>
+								<attrib name="16">false</attrib>
+								<attrib name="15">false</attrib>
+								<attrib name="339"/>
+								<attrib name="338">false</attrib>
+								<attrib name="340">false</attrib>
+							</attribs>
+						</fieldAttribs>
+						<attribs>
+							<attrib name="comment"/>
+							<attrib name="name">product_timezone</attrib>
+							<attrib name="refField">0</attrib>
+							<attrib name="matchType">s</attrib>
+							<attrib name="id">51590</attrib>
+							<attrib name="onDelete">n</attrib>
+							<attrib name="onUpdate">n</attrib>
+							<attrib name="refTable">0</attrib>
+							<attrib name="type">26741</attrib>
+						</attribs>
+						<modsConfig/>
+						<docs>
+							<p>
+								<t>This is the timezone of the data product and is required to calculate daily aggregates</t>
+							</p>
+						</docs>
 					</field>
 					<field>
 						<fieldAttribs>
