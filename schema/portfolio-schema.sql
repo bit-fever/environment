@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 249
+-- === Build : 258
 -- ======================================================================
 
 CREATE TABLE portfolio
@@ -130,7 +130,7 @@ CREATE INDEX tradeIDX1 ON trade(trading_system_id);
 
 -- ======================================================================
 
-CREATE TABLE daily_profit
+CREATE TABLE daily_return
   (
     id                 int      auto_increment,
     trading_system_id  int      not null,
@@ -144,7 +144,7 @@ CREATE TABLE daily_profit
   )
  ENGINE = InnoDB ;
 
-CREATE INDEX daily_profitIDX1 ON daily_profit(trading_system_id);
+CREATE INDEX daily_returnIDX1 ON daily_return(trading_system_id);
 
 -- ======================================================================
 
