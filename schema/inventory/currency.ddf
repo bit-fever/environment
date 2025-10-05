@@ -1,7 +1,7 @@
 #---------------------------------------------------------
-#--- File exported in DDF format on 2025-05-04 19:45:27
+#--- File exported in DDF format on 2025-10-03 16:40:21
 #---
-#--- SELECT id,code,name,symbol,position FROM inventory.currency
+#--- SELECT id,code,name,symbol,first_date,last_date,last_value,history_ended FROM inventory.currency
 #---------------------------------------------------------
 
 [INFO]
@@ -14,8 +14,12 @@ id,            INTEGER,    K
 code,          VARCHAR,    N
 name,          VARCHAR,    N
 symbol,        VARCHAR,    N
-position,      INTEGER,    N
+first_date,    INTEGER,    N
+last_date,     INTEGER,    N
+last_value,    DOUBLE,     N
+history_ended, TINYINT,    N
 
 [INSERT]
-1	USD	US Dollar	$	0
-2	EUR	Euro	~20AC	1
+1	USD	US Dollar	$	0	0	1.0	0
+2	EUR	Euro	~20AC	0	0	0.0	0
+3	GBP	British Pound Sterling	~00A3	0	0	0.0	0
