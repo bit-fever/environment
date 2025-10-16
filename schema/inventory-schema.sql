@@ -1,7 +1,7 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Inventory Server
 -- ===
--- === Build : 261
+-- === Build : 263
 -- ======================================================================
 
 CREATE TABLE trading_session
@@ -26,7 +26,7 @@ CREATE TABLE currency
     id             int           auto_increment,
     code           varchar(16)   unique not null,
     name           varchar(32)   not null,
-    symbol         varchar(8)    not null,
+    symbol         varchar(4)    not null,
     first_date     int           not null,
     last_date      int           not null,
     last_value     double        not null,
@@ -97,6 +97,27 @@ CREATE TABLE agent_profile
  ENGINE = InnoDB ;
 
 CREATE INDEX agent_profileIDX1 ON agent_profile(username);
+
+-- ======================================================================
+
+CREATE TABLE portfolio
+  (
+    id           int           auto_increment,
+    username     varchar(32)   not null,
+    name         varchar(64)   not null,
+    currency_id  int           not null,
+    capital      int           not null,
+    target_risk  int           not null,
+    created_at   datetime      not null,
+    updated_at   datetime,
+
+    primary key(id),
+
+    foreign key(currency_id) references currency(id)
+  )
+ ENGINE = InnoDB ;
+
+CREATE INDEX portfolioIDX1 ON portfolio(username);
 
 -- ======================================================================
 

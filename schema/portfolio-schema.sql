@@ -1,21 +1,16 @@
 -- ======================================================================
 -- ===   Sql Script for Database : Portfolio Trader
 -- ===
--- === Build : 258
+-- === Build : 263
 -- ======================================================================
 
 CREATE TABLE portfolio
   (
-    id          int           auto_increment,
-    username    varchar(32)   not null,
-    parent_id   int,
-    name        varchar(64)   not null,
-    created_at  datetime      not null,
-    updated_at  datetime,
+    id        int,
+    username  varchar(32)   not null,
+    name      varchar(64)   not null,
 
-    primary key(id),
-
-    foreign key(parent_id) references portfolio(id)
+    primary key(id)
   )
  ENGINE = InnoDB ;
 
@@ -40,6 +35,7 @@ CREATE TABLE trading_system
     market_type         char(2)        not null,
     currency_id         int            not null,
     currency_code       varchar(16)    not null,
+    currency_symbol     varchar(4)     not null,
     trading_session_id  int            not null,
     session_name        varchar(32)    not null,
     session_config      text           not null,
